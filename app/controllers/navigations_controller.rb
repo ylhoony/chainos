@@ -1,6 +1,7 @@
 class NavigationsController < ApplicationController
   
   def index
+    # Entry Point to redirect to the right page
     
   end
 
