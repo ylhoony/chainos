@@ -1,0 +1,11 @@
+/* Sign up Form */
+
+#signup {
+  background-color: steelblue;
+  padding: 5px;
+  width: 40%;
+}
+
+#signup h3 {
+  margin: 0;
+}
