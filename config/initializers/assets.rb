@@ -13,6 +13,9 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w( 
   normalize.css
+  main.js
   devise/registrations.js
   devise/registrations.css
+  devise/sessions.js
+  devise/sessions.css
 )
