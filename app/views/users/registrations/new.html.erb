@@ -1,7 +1,12 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "signup" }) do |f| %>
   <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autocomplete: "off" %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -26,4 +31,35 @@
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+---------------
+
+<main id="user-signup">
+  <h3>Sign up</h3>
+  <form id="user-signup-form">
+      <div>
+        <label for="first_name">First Name</label>
+        <input name="first_name" type="text">
+      </div>
+      <div>
+        <label for="last_name">Last Name</label>
+        <input name="last_name" type="text">
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input name="email" type="email">
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input name="password" type="password">
+      </div>
+      <div>
+        <label for="password_confirmation">Password Confirmation</label>
+        <input name="password_confirmation" type="password_confirmation">
+      </div>
+
+
+    <button>Sign up</button>
+  </form>
+
+  <%= render "users/shared/links" %>
+<main>
