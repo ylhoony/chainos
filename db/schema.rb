@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503024302) do
+ActiveRecord::Schema.define(version: 20180503030124) do
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.string "alpha_2_code"
+    t.string "alpha_3_code"
+    t.string "numeric_code"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +38,8 @@ ActiveRecord::Schema.define(version: 20180503024302) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone"
+    t.integer "country_id"
+    t.index ["country_id"], name: "index_users_on_country_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
