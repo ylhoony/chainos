@@ -24,5 +24,6 @@
 .env
 
 .DS_Store
+vendor/assets
 vendor/fontawesome
 vendor/.DS_Store
