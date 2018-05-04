@@ -6,6 +6,28 @@ body {
   background-color: #f6f6f6;
 }
 
+header {
+
+}
+
+main {
+  padding-top: 60px;
+}
+
+footer {
+  align-items: center;
+  background-color: rgba(33, 37, 43, 1);
+  bottom: 0px;
+  color: rgba(255, 222, 173, 0.75);
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  left: 0px;
+  position: fixed;
+  width: 100%;
+}
+
+
 #nav-header {
   align-items: center;
   background-color: rgba(33, 37, 43, 1);
