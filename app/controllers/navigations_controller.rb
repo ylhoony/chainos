@@ -17,4 +17,20 @@ class NavigationsController < ApplicationController
     
   end
 
+  def product
+    
+  end
+
+  def warehouse
+    
+  end
+
+  def logistics
+    
+  end
+
+  def report
+    
+  end
+
 end
