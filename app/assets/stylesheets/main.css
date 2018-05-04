@@ -80,6 +80,11 @@ footer {
   padding: 15px 0 0;
 }
 
+#content {
+  background-color: firebrick;
+  /* padding: 10px; */
+}
+
 /* Body Main End */
 
 /* Media Queries Start */
