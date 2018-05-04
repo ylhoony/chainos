@@ -3,8 +3,46 @@
 }
 
 body {
-  background-color: #f6f6f6
+  background-color: #f6f6f6;
 }
+
+#nav-header {
+  align-items: center;
+  background-color: rgba(33, 37, 43, 1);
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+}
+
+#nav-header ul {
+  list-style: none;
+}
+
+.nav-header-list {
+  /* display: none; */
+  padding: 0 5px;
+}
+
+.nav-header-list a:link,
+.nav-header-list a:visited {
+  color: rgba(255, 222, 173, 0.75);
+  text-decoration: none;
+}
+
+.nav-header-list a:hover {
+  color: orangered;
+}
+
+#nav-header-menu,
+#nav-header-env {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  padding: 0;
+}
+
 
 /* Media Queries */
 
