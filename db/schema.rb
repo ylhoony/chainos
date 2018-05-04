@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20180503030124) do
     t.string "alpha_2_code"
     t.string "alpha_3_code"
     t.string "numeric_code"
-    t.boolean "active"
+    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
