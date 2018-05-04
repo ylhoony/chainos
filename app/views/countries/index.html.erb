@@ -1,28 +1,41 @@
 <section id="breadcrumb">
   Home > Ground Data > Countries
 </section>
+
 <section id="content">
-  <div>
+  <div id="content-header">
     <h3>Countries</h3>
+    <button>+</button>
   </div>
   <div>
     <table>
-      <tr>
-        <th>Name</th>
-        <th>ISO 2</th>
-        <th>ISO 3</th>
-        <th>Numeric Code</th>
-        <th>Status</th>
-        <th></th>
-      </tr>
-      <tr>
-        <td>Name</td>
-        <td>ISO 2</td>
-        <td>ISO 3</td>
-        <td>Numeric Code</td>
-        <td>Status</td>
-        <td></td>
-      </tr>
+        <tr>
+          <th>Country Name</th>
+          <th>ISO Alpha-2 Code</th>
+          <th>ISO Alpha-3 Code</th>
+          <th>ISO Numeric Code</th>
+          <th>Status</th>
+          <th>Delete button</th>
+        </tr>
+      <% @countries.each do |country| %>
+        <tr>
+          <td><%= country.name %></td>
+          <td><%= country.alpha_2_code %></td>
+          <td><%= country.alpha_3_code %></td>
+          <td><%= country.numeric_code %></td>
+          <td><%= check_box "country", "active", { checked: country.status, disabled: true } %></td>
+          <td>Delete button</td>
+        </tr>
+      <% end %>
+
+    </table>
+  </div>
+  <div>
+    <p><%= link_to "Add New Country", new_country_path %></p>
+  </div>
+
+  <div>
+    <table>
       <tr>
         <form>
           <td><input name="name" type="text" placeholder="Country name"></td>
@@ -31,10 +44,7 @@
           <td><input name="numeric_code" type="text" placeholder="Numeric code"></td>
           <td>Status</td>
         </form>
-      </tr>
-      <tr>
-        <td>Add new</td>
-      </tr>    
+      </tr>  
     </table>
   </div>
 </section>
