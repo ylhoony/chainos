@@ -42,9 +42,13 @@ footer {
   list-style: none;
 }
 
+#nav-header-logo {
+  padding: 0 10px 0 0;
+}
+
 .nav-header-list {
   /* display: none; */
-  padding: 0 5px;
+  padding: 0 10px;
 }
 
 .nav-header-list a:link,
