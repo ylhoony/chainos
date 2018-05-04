@@ -145,6 +145,11 @@ td button {
   padding: 15px 0;
 }
 
+.create i:hover {
+  color: cornflowerblue;
+  cursor: pointer;
+}
+
 /* Body Main End */
 
 /* Media Queries Start */
