@@ -1,7 +1,8 @@
 class CountriesController < ApplicationController
 
   def index
-  
+    @countries = Country.all
+    # render json: @countries, status: 201
   end
 
   def new
