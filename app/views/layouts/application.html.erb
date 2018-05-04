@@ -9,11 +9,19 @@
   </head>
 
   <body>
-    <% if current_page?(controller: "devise/sessions", action: "new") || current_page?(controller: "devise/registrations", action: "new") %>
-    <% else %>
-      <%= render partial: "layouts/header" %>
-    <% end %>
-    <%= yield %>
+    <header>
+      <% if current_page?(controller: "devise/sessions", action: "new") || current_page?(controller: "devise/registrations", action: "new") %>
+      <% else %>
+        <%= render partial: "layouts/header" %>
+      <% end %>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+
+    </footer>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'main' %>
     <%= javascript_include_tag params[:controller] %>
