@@ -33,4 +33,8 @@ class NavigationsController < ApplicationController
     
   end
 
+  def setting
+    
+  end
+
 end

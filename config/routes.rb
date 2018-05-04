@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get "/warehouse", to: "navigations#warehouse", as: "nav_warehouse"
   get "/logistics", to: "navigations#logistics", as: "nav_logistics"
   get "/report", to: "navigations#report", as: "nav_report"
-  
+  get "/setting", to: "navigations#setting", as: "nav_setting"
+
   root to: "navigations#index"
   
 end
