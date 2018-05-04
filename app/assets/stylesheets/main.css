@@ -1,3 +1,4 @@
+/* Global Start */
 * {
   box-sizing: border-box;
 }
@@ -11,7 +12,7 @@ header {
 }
 
 main {
-  padding-top: 60px;
+  padding: 60px 15px 0;
 }
 
 footer {
@@ -26,8 +27,10 @@ footer {
   position: fixed;
   width: 100%;
 }
+/* Global End */
 
-
+/* Header Start */
+/* Header Navigation Start */
 #nav-header {
   align-items: center;
   background-color: rgba(33, 37, 43, 1);
@@ -68,9 +71,18 @@ footer {
   justify-content: flex-start;
   padding: 0;
 }
+/* Header Navigation End */
+/* Header End */
 
+/* Body Main Start */
+#breadcrumb {
+  font-size: 0.9em;
+  padding: 15px 0 0;
+}
 
-/* Media Queries */
+/* Body Main End */
+
+/* Media Queries Start */
 
 @media (min-width: 576px) {
 
@@ -88,4 +100,4 @@ footer {
   
 }
 
-
+/* Media Queries End */
