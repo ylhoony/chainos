@@ -18,6 +18,8 @@ Rails.application.config.assets.precompile += %w(
   devise/registrations.css
   devise/sessions.js
   devise/sessions.css
+  navigations.js
+  navigations.css
   countries.js
   countries.css
 )
