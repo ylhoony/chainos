@@ -121,7 +121,7 @@ footer {
 
 .table-header th, 
 .table-content td {
-  padding: 5px 0;
+  padding: 5px 10px;
 }
 
 .td-left {
@@ -132,12 +132,6 @@ footer {
   text-align: center;
 }
 
-td button {
-  border-radius: 5px;
-  height: 22.5px;
-  width: 22.5px;
-}
-
 #content-footer {
   align-items: center;
   display: flex;
@@ -146,7 +140,17 @@ td button {
 }
 
 .create i:hover {
+  color: forestgreen;
+  cursor: pointer;
+}
+
+.update i:hover {
   color: cornflowerblue;
+  cursor: pointer;
+}
+
+.delete i:hover {
+  color: firebrick;
   cursor: pointer;
 }
 
