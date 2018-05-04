@@ -22,3 +22,5 @@
 
 .byebug_history
 .env
+
+/vendor/fontawesome-pro-5.0.12
