@@ -10,24 +10,6 @@ $(".update i").click(function(e){
   console.log($(e.target).data());
 });
 
-
-
-function eventListener () {
-  // $(".create i").click(function() {
-  //   console.log("create!");
-  // });
-
-  // $(".delete i").click(function(){
-  //   console.log("delete!");
-  // });
-
-  // $(".update i").click(function(){
-  //   console.log("update!");
-  // });
-
-}
-
-$(function() {
-  eventListener();
+document.addEventListener("DOMContentLoaded", function(event) {
+  console.log("hello, DOM content load!")
 });
-
