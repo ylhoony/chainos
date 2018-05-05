@@ -18,20 +18,23 @@
           <th></th>
           <th></th>
         </tr>
-      <% @countries.each do |country| %>
-        <tr class="table-content">
-          <td class="td-left"><%= country.name %></td>
-          <td class="td-center"><%= country.alpha_2_code %></td>
-          <td class="td-center"><%= country.alpha_3_code %></td>
-          <td class="td-center"><%= country.numeric_code %></td>
-          <td class="td-center"><%= check_box "country", "status", { checked: country.status, disabled: true } %></td>
-          <td class="td-center update"><i class="fas fa-exchange fa-sm" data-id=<%= country.id %>></i></td>
-          <td class="td-center delete"><i class="far fa-trash-alt fa-sm" data-id=<%= country.id %>></i></td>
-        </tr>
-      <% end %>
+
     </table>
   </div>
   <div id="content-footer">
     <div class="create"><i class="far fa-plus-square fa-2x"></i></div>
   </div>
 </section>
+
+
+<script id="country-template" type="text/x-handlebars-template">
+  <form>
+    <td class="td-left"><input type="text" value="{{name}}" disabled></td>
+    <td class="td-center"><input type="text" value="{{alpha_2_code}}" disabled></td>
+    <td class="td-center"><input type="text" value="{{alpha_3_code}}" disabled></td>
+    <td class="td-center"><input type="text" value="{{numeric_code}}" disabled></td>
+    <td class="td-center"></td>
+    <td class="td-center update"><button><i class="fas fa-exchange fa-sm" data-id="{{id}}"></i></button></td>
+  </form>
+  <td class="td-center delete"><button><i class="far fa-trash-alt fa-sm" data-id="{{id}}"></i></button></td>
+</script>
