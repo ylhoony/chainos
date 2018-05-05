@@ -24,9 +24,9 @@
           <td class="td-center"><%= country.alpha_2_code %></td>
           <td class="td-center"><%= country.alpha_3_code %></td>
           <td class="td-center"><%= country.numeric_code %></td>
-          <td class="td-center"><%= check_box "country", "active", { checked: country.status, disabled: true } %></td>
-          <td class="td-center update" data-id=<%= country.id %>><i class="fas fa-exchange fa-sm"></i></td>
-          <td class="td-center delete" data-id=<%= country.id %>><i class="far fa-trash-alt fa-sm"></i></td>
+          <td class="td-center"><%= check_box "country", "status", { checked: country.status, disabled: true } %></td>
+          <td class="td-center update"><i class="fas fa-exchange fa-sm" data-id=<%= country.id %>></i></td>
+          <td class="td-center delete"><i class="far fa-trash-alt fa-sm" data-id=<%= country.id %>></i></td>
         </tr>
       <% end %>
     </table>
