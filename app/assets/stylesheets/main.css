@@ -124,12 +124,28 @@ footer {
   padding: 5px 10px;
 }
 
-.td-left {
+.td-left,
+.td-left input {
   text-align: left;
 }
 
-.td-center {
+.td-center,
+.td-center input {
   text-align: center;
+}
+
+.td-right,
+.td-right input {
+  text-align: left;
+}
+
+.td-left input,
+.td-center input,
+.td-right input {
+  background: transparent;
+  border: transparent;
+  color: black;
+  width: 100%;
 }
 
 #content-footer {
