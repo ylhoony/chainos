@@ -89,7 +89,7 @@ footer {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 15px 0;
+  padding: 15px 10px;
 }
 
 #content-header h2 {
@@ -136,7 +136,7 @@ footer {
   align-items: center;
   display: flex;
   justify-content: flex-end;
-  padding: 15px 0;
+  padding: 15px 10px;
 }
 
 .create i:hover {
