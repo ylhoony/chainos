@@ -24,7 +24,7 @@
     </footer>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'main' %>
-    <%= javascript_include_tag params[:controller] %>
+    <%= javascript_include_tag 'main', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag params[:controller], 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
