@@ -138,12 +138,20 @@ footer {
   text-align: left;
 }
 
-.td-left input,
-.td-center input,
-.td-right input {
+.td-left input[disabled],
+.td-center input[disabled],
+.td-right input[disabled] {
   background: transparent;
   border: transparent;
   color: black;
+  width: 100%;
+}
+
+.td-left input,
+.td-center input,
+.td-right input {
+  background: #f6f6f6;
+  border: grey;
   width: 100%;
 }
 
