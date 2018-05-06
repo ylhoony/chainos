@@ -9,11 +9,11 @@ class CountriesController < ApplicationController
   end
 
   def new
-    
+    @country = Country.new
   end
 
   def create
-    
+    binding.pry
   end
 
   def show
@@ -31,7 +31,7 @@ class CountriesController < ApplicationController
   private
 
   def country_params
-    # params.require(:country).permit(:name, alpha_2_code, alpha_3_code, numeric_code, :status)
+    params.require(:country).permit(:name, :alpha_2_code, :alpha_3_code, :numeric_code, :status)
   end
 
 end
