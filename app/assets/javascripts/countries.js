@@ -1,30 +1,40 @@
-$(".create i").click(function() {
+$(".create button").click(function() {
   console.log("create!");
 });
 
-$(".delete i").click(function(e){
+$(".delete button").click(function(e){
   console.log(e.target);
 });
 
-$(".update i").click(function(e){
+$(".update button").click(function(e){
   console.log($(e.target).data());
 });
+
+function displayCountriesList(data) {
+  const template = Handlebars.compile(document.getElementById("country-template").innerHTML);
+  const list = { countries: data };
+  document.getElementById("content-table").innerHTML = template(list);
+}
 
 function getCountriesList() {
   fetch('/countries.json')
   .then(res => res.json())
-  .then(data => console.log(data))
+  .then(data => displayCountriesList(data))
 }
 
-function handlebarSetup() {
-
+function handlebarsSetup() { 
+  Handlebars.registerPartial('countryDetailsPartial', document.getElementById("country-details-partial").innerHTML)
 }
 
 function init() {
-  // handlebarSetup();
+  handlebarsSetup();
   getCountriesList();
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
   init();
 });
+
+// $(function() {
+//   init();
+// })
