@@ -27,9 +27,14 @@ function displayCountriesList(data) {
 }
 
 function getCountriesList() {
-  fetch('/countries.json')
-  .then(res => res.json())
-  .then(data => displayCountriesList(data))
+  fetch("/countries", {
+    method: 'get',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }})
+    .then(res => res.json())
+    .then(data => displayCountriesList(data))
 }
 
 function handlebarsSetup() { 
