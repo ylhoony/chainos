@@ -7,6 +7,9 @@ function displayCountriesList(data) {
     // console.log("update", e.target);
     $parent = $(e.target).parents(".table-content").find("input");
     console.log($parent);
+    // $parent[0].getAttribute("name")
+    // $parent[0].value;
+    // debugger;
   });
 
   $(".delete button").click(function(e){
@@ -42,10 +45,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
   init();
 });
 
-
-
 $(function() {
   $(".create button").click(function() {
-    console.log("create!");
+    const template = Handlebars.compile(document.getElementById("country-form-template").innerHTML);
+    document.getElementById("dialog-form").innerHTML = template();
+    const top = (window.innerHeight - $("#dialog-form").height())/2;
+    const left = (window.innerWidth - $("#dialog-form").width())/2;
+    
+    $("#dialog-form").css("top", top);
+    $("#dialog-form").css("left", left);
   });
 });
