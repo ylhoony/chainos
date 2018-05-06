@@ -52,12 +52,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 $(function() {
   $(".create button").click(function() {
+    $(".modal").css("display", "unset");
     const template = Handlebars.compile(document.getElementById("country-form-template").innerHTML);
-    document.getElementById("dialog-form").innerHTML = template();
-    const top = (window.innerHeight - $("#dialog-form").height())/2;
-    const left = (window.innerWidth - $("#dialog-form").width())/2;
+    document.getElementById("modal-content-country").innerHTML = template();
+    const top = (window.innerHeight - $("#modal-content-country").height())/2;
+    const left = (window.innerWidth - $("#modal-content-country").width())/2;
     
-    $("#dialog-form").css("top", top);
-    $("#dialog-form").css("left", left);
+    $("#modal-content-country").css("top", top);
+    $("#modal-content-country").css("left", left);
   });
 });
