@@ -4,7 +4,9 @@ function displayCountriesList(data) {
   document.getElementById("content-table").innerHTML = template(list);
 
   $(".update button").click(function(e){
-    console.log("update", e.target);
+    // console.log("update", e.target);
+    $parent = $(e.target).parents(".table-content").find("input");
+    console.log($parent);
   });
 
   $(".delete button").click(function(e){
@@ -12,11 +14,13 @@ function displayCountriesList(data) {
   });
 
   $(".input-text").on("click", function(e){
-    // reset();
-    // $( "input[type='text']" ).prop( "disabled", true);
-    // $(".input-text").prop("disabled", true);
-    $(e.target).prop("disabled", false);
-  })
+    let $selector = $(e.target);
+    if ($selector.prop("disabled")) {
+      $("input[type='text']").prop("disabled", true);
+      $selector.prop("disabled", false);
+      $selector[0].setSelectionRange(0, 0);
+    }
+  });
 }
 
 function getCountriesList() {
@@ -38,8 +42,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
   init();
 });
 
+
+
 $(function() {
   $(".create button").click(function() {
     console.log("create!");
   });
-})
+});
