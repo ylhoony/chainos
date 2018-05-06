@@ -196,6 +196,28 @@ footer {
 
 /* Body Main End */
 
+
+/* Modal Start */
+.modal {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: none; /* Hidden by default */
+  height: 100%; /* Full height */
+  left: 0;
+  overflow: auto; /* Enable scroll if needed */
+  position: fixed; /* Stay in place */
+  top: 0;
+  width: 100%; /* Full width */
+  z-index: 1; /* Sit on top */
+}
+
+.modal-header h3 {
+  margin: 0;
+}
+
+/* Modal End */
+
+
 /* Media Queries Start */
 
 @media (min-width: 576px) {

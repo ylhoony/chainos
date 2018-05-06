@@ -1,0 +1,26 @@
+#modal-content-country {
+  background-color: lightsteelblue;
+  border-radius: 5px;
+  padding: 15px;
+  position: relative;
+  width: 300px;
+  z-index: 1;
+}
+
+#modal-content-country form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+}
+
+#modal-content-country form div {
+  padding: 15px 0 0;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+}
+
+#modal-content-country form input {
+  border-radius: 5px;
+}
+
