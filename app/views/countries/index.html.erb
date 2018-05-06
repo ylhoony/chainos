@@ -8,32 +8,37 @@
     <div class="create"><i class="far fa-plus-square fa-2x"></i></div>
   </div>
   <div id="content-table">
-    <table>
-        <tr class="table-header">
-          <th>Country Name</th>
-          <th>ISO Alpha-2 Code</th>
-          <th>ISO Alpha-3 Code</th>
-          <th>ISO Numeric Code</th>
-          <th>Status</th>
-          <th></th>
-          <th></th>
-        </tr>
-
-    </table>
+    <!-- input Handlebar country-template -->
   </div>
   <div id="content-footer">
     <div class="create"><i class="far fa-plus-square fa-2x"></i></div>
   </div>
 </section>
 
-
+<!-- Handlear Template for Countries display in table -->
 <script id="country-template" type="text/x-handlebars-template">
+  <table>
+    <tr class="table-header">
+      <th>Country Name</th>
+      <th>ISO Alpha-2 Code</th>
+      <th>ISO Alpha-3 Code</th>
+      <th>ISO Numeric Code</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+    </tr>
+    {{> countryDetailsPartial }} <!-- this comes from country-details-partial -->
+  </table>
+</script>
+
+<!-- Partial Handlear Template for each country data into the country table  -->
+<script id="country-details-partial" type="text/x-handlebars-template">
   <form>
     <td class="td-left"><input type="text" value="{{name}}" disabled></td>
     <td class="td-center"><input type="text" value="{{alpha_2_code}}" disabled></td>
     <td class="td-center"><input type="text" value="{{alpha_3_code}}" disabled></td>
     <td class="td-center"><input type="text" value="{{numeric_code}}" disabled></td>
-    <td class="td-center"></td>
+    <td class="td-center">checkbox</td>
     <td class="td-center update"><button><i class="fas fa-exchange fa-sm" data-id="{{id}}"></i></button></td>
   </form>
   <td class="td-center delete"><button><i class="far fa-trash-alt fa-sm" data-id="{{id}}"></i></button></td>
