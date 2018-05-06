@@ -98,7 +98,6 @@ footer {
 
 #content-header button {
   border-radius: 5px;
-  height: 25px;
 }
 
 #content-table {
@@ -155,20 +154,41 @@ footer {
   padding: 15px 10px;
 }
 
-.create i:hover {
-  color: forestgreen;
+.create button,
+.update button,
+.delete button {
+  align-items: center;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.create button {
+  height: 2.5em;
+  width: 2.5em;
+}
+.update button,
+.delete button {
+  height: 1.5em;
+  width: 1.5em;
+}
+
+.create button:hover {
+  background-color: forestgreen;
+  color: white;
+  cursor: pointer;
+}
+.update button:hover {
+  background-color: cornflowerblue;
+  color: white;
   cursor: pointer;
 }
 
-.update i:hover {
-  color: cornflowerblue;
+.delete button:hover {
+  background-color: firebrick;
+  color: white;
   cursor: pointer;
-}
-
-.delete i:hover {
-  color: firebrick;
-  cursor: pointer;
-}
+} 
 
 /* Body Main End */
 
