@@ -15,7 +15,9 @@
   </div>
 </section>
 
-<section id="dialog-form">
+<section class="modal">
+  <main id="modal-content-country">
+  </main>
 </section>
 
 <!-- Handlear Template for Countries display in table -->
@@ -54,5 +56,32 @@
 </script>
 
 <script id="country-form-template" type="text/x-handlebars-template">
-
+  <header class="modal-header">
+    <h3>New Country</p>
+  </header>
+  <form id="new_country" action="/countries" accept-charset="UTF-8" method="post">
+    <%= hidden_field_tag :authenticity_token, :form_authenticity_token %>
+    <div>
+      <label for="country_name">Name</label>
+      <input type="text" name="country[name]" id="country_name">
+    </div>
+    <div>
+      <label for="country_alpha_2_code">ISO Alpha-2 Code</label>
+      <input type="text" name="country[alpha_2_code]" id="country_alpha_2_code">
+    </div>
+    <div>
+      <label for="country_alpha_3_code">ISO Alpha-3 Code</label>
+      <input type="text" name="country[alpha_3_code]" id="country_alpha_3_code">
+    </div>
+    <div>
+      <label for="country_numeric_code">Numeric Code</label>
+      <input type="text" name="country[numeric_code]" id="country_numeric_code">
+    </div>
+    <div>
+      <input value="true" type="hidden" name="country[status]" id="country_status">
+      <%# <input type="submit" name="commit" value="Create"> %>
+      <button type="reset">Reset</button>
+      <button type="submit" name="commit">Submit</button>
+    </div>
+  </form>
 </script>
