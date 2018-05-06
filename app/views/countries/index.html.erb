@@ -5,13 +5,13 @@
 <section id="content">
   <div id="content-header">
     <h2>Countries</h2>
-    <div class="create"><i class="far fa-plus-square fa-2x"></i></div>
+    <div class="create"><button><i class="far fa-plus fa-lg"></i></button></div>
   </div>
   <div id="content-table">
     <!-- input Handlebar country-template -->
   </div>
   <div id="content-footer">
-    <div class="create"><i class="far fa-plus-square fa-2x"></i></div>
+    <div class="create"><button><i class="far fa-plus fa-lg"></i></button></div>
   </div>
 </section>
 
@@ -33,13 +33,21 @@
 
 <!-- Partial Handlear Template for each country data into the country table  -->
 <script id="country-details-partial" type="text/x-handlebars-template">
-  <form>
-    <td class="td-left"><input type="text" value="{{name}}" disabled></td>
-    <td class="td-center"><input type="text" value="{{alpha_2_code}}" disabled></td>
-    <td class="td-center"><input type="text" value="{{alpha_3_code}}" disabled></td>
-    <td class="td-center"><input type="text" value="{{numeric_code}}" disabled></td>
-    <td class="td-center">checkbox</td>
-    <td class="td-center update"><button><i class="fas fa-exchange fa-sm" data-id="{{id}}"></i></button></td>
-  </form>
-  <td class="td-center delete"><button><i class="far fa-trash-alt fa-sm" data-id="{{id}}"></i></button></td>
+  {{#each countries}}
+  <tr class="table-content">
+    <form>
+      <td class="td-left"><input type="text" value="{{this.name}}" disabled></td>
+      <td class="td-center"><input type="text" value="{{this.alpha_2_code}}" disabled></td>
+      <td class="td-center"><input type="text" value="{{this.alpha_3_code}}" disabled></td>
+      <td class="td-center"><input type="text" value="{{this.numeric_code}}" disabled></td>
+      {{#if this.status}}
+        <td class="td-center"><input type="checkbox" checked></td>
+      {{else}}
+        <td class="td-center"><input type="checkbox"></td>
+      {{/if}}
+      <td class="td-center update"><button><i class="fas fa-exchange fa-sm" data-id="{{this.id}}"></i></button></td>
+    </form>
+    <td class="td-center delete"><button><i class="far fa-trash-alt fa-sm" data-id="{{this.id}}"></i></button></td>
+  </tr>
+  {{/each}}
 </script>
