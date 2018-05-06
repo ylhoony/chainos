@@ -15,6 +15,9 @@
   </div>
 </section>
 
+<section id="dialog-form">
+</section>
+
 <!-- Handlear Template for Countries display in table -->
 <script id="country-template" type="text/x-handlebars-template">
   <table>
@@ -35,17 +38,21 @@
 <script id="country-details-partial" type="text/x-handlebars-template">
   {{#each countries}}
   <tr class="table-content">
-    <td class="td-left input-text"><input type="text" value="{{this.name}}" disabled></td>
-    <td class="td-center input-text"><input type="text" value="{{this.alpha_2_code}}" disabled></td>
-    <td class="td-center input-text"><input type="text" value="{{this.alpha_3_code}}" disabled></td>
-    <td class="td-center input-text"><input type="text" value="{{this.numeric_code}}" disabled></td>
+    <td class="td-left input-text"><input type="text" name="name" value="{{this.name}}" disabled></td>
+    <td class="td-center input-text"><input type="text" name="alpha_2_code" value="{{this.alpha_2_code}}" disabled></td>
+    <td class="td-center input-text"><input type="text" name="alpha_3_code" value="{{this.alpha_3_code}}" disabled></td>
+    <td class="td-center input-text"><input type="text" name="numeric_code" value="{{this.numeric_code}}" disabled></td>
     {{#if this.status}}
-      <td class="td-center"><input type="checkbox" checked></td>
+      <td class="td-center"><input type="checkbox" name="status" checked></td>
     {{else}}
-      <td class="td-center"><input type="checkbox"></td>
+      <td class="td-center"><input type="checkbox" name="status"></td>
     {{/if}}
     <td class="td-center update"><button><i class="fas fa-exchange fa-sm" data-id="{{this.id}}"></i></button></td>
     <td class="td-center delete"><button><i class="far fa-trash-alt fa-sm" data-id="{{this.id}}"></i></button></td>
   </tr>
   {{/each}}
+</script>
+
+<script id="country-form-template" type="text/x-handlebars-template">
+
 </script>
