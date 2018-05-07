@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503025711) do
+ActiveRecord::Schema.define(version: 20180507192529) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
     t.string "alpha_2_code"
+    t.string "alpha_3_code"
+    t.string "numeric_code"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "currencies", force: :cascade do |t|
+    t.string "name"
     t.string "alpha_3_code"
     t.string "numeric_code"
     t.boolean "status"
