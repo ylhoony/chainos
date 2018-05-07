@@ -60,7 +60,8 @@
     <h3>New Country</p>
   </header>
   <form id="new_country" action="/countries" accept-charset="UTF-8" method="post">
-    <%= hidden_field_tag :authenticity_token, :form_authenticity_token %>
+    <input name="utf8" type="hidden" value="✓">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <div>
       <label for="country_name">Name</label>
       <input type="text" name="country[name]" id="country_name">
@@ -79,9 +80,7 @@
     </div>
     <div>
       <input value="true" type="hidden" name="country[status]" id="country_status">
-      <%# <input type="submit" name="commit" value="Create"> %>
-      <button type="reset">Reset</button>
-      <button type="submit" name="commit">Submit</button>
+      <input type="submit" name="commit" value="Create">
     </div>
   </form>
 </script>
