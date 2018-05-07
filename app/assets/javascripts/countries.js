@@ -13,7 +13,17 @@ function displayCountriesList(data) {
   });
 
   $(".delete button").click(function(e){
-    console.log("delete", e.target);
+    $.ajax({
+      url: `/countries/${$(this).data().id}`,
+      method: "delete",
+      dataType: "json"
+    })
+    .done((res) => {
+      getCountriesList();
+    })
+    .fail((err) => {
+      console.log("error!");
+    })
   });
 
   $(".input-text").on("click", function(e){
