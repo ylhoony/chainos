@@ -29,7 +29,15 @@ class CountriesController < ApplicationController
   end
 
   def update
-    
+    @country = Country.find(params[:id])
+    if @country.update(country_params)
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @country, status: 201 }
+      end
+    else
+      render :index
+    end
   end
 
   def destroy
