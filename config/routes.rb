@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :currencies
   resources :countries
   devise_for :users, controllers: {
     registrations: "users/registrations",
