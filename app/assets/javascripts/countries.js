@@ -4,17 +4,35 @@ function displayCountriesList(data) {
   document.getElementById("content-table").innerHTML = template(list);
 
   $(".update button").click(function(e){
-    // console.log("update", e.target);
-    $parent = $(e.target).parents(".table-content").find("input");
-    console.log($parent);
-    // $parent[0].getAttribute("name")
-    // $parent[0].value;
-    // debugger;
+    $row = $(this).parents(".table-content").find("input");
+    const chunk = {
+        country: {
+          name: $row[0].value,
+          alpha_2_code: $row[1].value,
+          alpha_3_code: $row[2].value,
+          numeric_code: $row[3].value,
+          status: $row[4].checked
+        }
+    }
+
+    $.ajax({
+      url: `/countries/${$(this).data("id")}`,
+      method: "put",
+      data: chunk,
+      dataType: "json"
+    })
+    .done((res) => {
+      getCountriesList();
+    })
+    .fail((err) => {
+      alert( "error" );
+    })
+
   });
 
   $(".delete button").click(function(e){
     $.ajax({
-      url: `/countries/${$(this).data().id}`,
+      url: `/countries/${$(this).data("id")}`,
       method: "delete",
       dataType: "json"
     })
