@@ -14,10 +14,10 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( 
   normalize.css
   main.js
-  devise/registrations.js
-  devise/registrations.css
-  devise/sessions.js
-  devise/sessions.css
+  users/registrations.js
+  users/registrations.css
+  users/sessions.js
+  users/sessions.css
   navigations.js
   navigations.css
   countries.js
