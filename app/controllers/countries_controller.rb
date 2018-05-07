@@ -13,7 +13,15 @@ class CountriesController < ApplicationController
   end
 
   def create
-    binding.pry
+    @country = Country.new(country_params)
+    if @country.save
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @country, status: 201 }
+      end
+    else
+      render :index
+    end
   end
 
   def show
