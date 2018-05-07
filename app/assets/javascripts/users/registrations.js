@@ -2,7 +2,6 @@ $(function(){
 
   $('form#new_user').submit(function(e) {
     e.preventDefault();
-    // console.log("button working")
     const $form = $(this);
     const action = $form.attr("action");
     const params = $form.serialize();
@@ -14,10 +13,10 @@ $(function(){
       dataType: "json"
     })
     .done((res) => {
-      console.log(res);
+      document.location.href = '/'
     })
     .fail((err) => {
-      alert( "error" );
+      console.log(err);
     })
   });
 
