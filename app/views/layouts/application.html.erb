@@ -12,7 +12,7 @@
     <%= javascript_include_tag params[:controller], 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <% if current_page?(controller: "devise/sessions", action: "new") || current_page?(controller: "devise/registrations", action: "new") %>
+    <% if current_page?(controller: "users/sessions", action: "new") || current_page?(controller: "users/registrations", action: "new") %>
     <% else %>
       <%= render partial: "layouts/header" %>
     <% end %>
