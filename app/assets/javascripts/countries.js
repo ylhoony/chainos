@@ -60,5 +60,26 @@ $(function() {
     
     $("#modal-content-country").css("top", top);
     $("#modal-content-country").css("left", left);
+
+    $("form#new_country").submit(function(e) {
+      e.preventDefault();
+      const $form = $(this);
+      const action = $form.attr("action");
+      const params = $form.serialize();
+
+      $.ajax({
+        url: action,
+        method: "post",
+        data: params,
+        dataType: "json"
+      })
+      .done((res) => {
+        $(".modal").css("display", "none");
+        getCountriesList();
+      })
+      .fail((err) => {
+        alert( "error" );
+      })
+    });
   });
 });
