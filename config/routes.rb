@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :countries
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    sessions: "users/sessions"
+  }
 
   get "/dashboard", to: "navigations#dashboard", as: "nav_dashboard"
   get "/demand", to: "navigations#demand", as: "nav_demand"
