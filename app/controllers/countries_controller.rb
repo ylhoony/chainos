@@ -32,8 +32,16 @@ class CountriesController < ApplicationController
     
   end
 
-  def delete
-    
+  def destroy
+    @country = Country.find(params[:id])
+    if @country.delete
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @country, status: 201 }
+      end
+    else
+      render :index
+    end    
   end
 
   private
