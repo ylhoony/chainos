@@ -1,0 +1,87 @@
+<section id="breadcrumb">
+  Home > Ground Data > Currencies
+</section>
+
+<section id="content">
+  <div id="content-header">
+    <h2>Currencies</h2>
+    <div class="create"><button><i class="far fa-plus fa-lg"></i></button></div>
+  </div>
+  <div id="content-table">
+    <!-- input Handlebar country-template -->
+  </div>
+  <div id="content-footer">
+    <div class="create"><button><i class="far fa-plus fa-lg"></i></button></div>
+  </div>
+</section>
+
+<section class="modal">
+  <main id="modal-content-country">
+  </main>
+</section>
+
+<!-- Handlear Template for Countries display in table -->
+<script id="country-template" type="text/x-handlebars-template">
+  <table>
+    <tr class="table-header">
+      <th>Country Name</th>
+      <th>ISO Alpha-2 Code</th>
+      <th>ISO Alpha-3 Code</th>
+      <th>ISO Numeric Code</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+    </tr>
+    {{> countryDetailsPartial }} <!-- this comes from country-details-partial -->
+  </table>
+</script>
+
+<!-- Partial Handlear Template for each country data into the country table  -->
+<script id="country-details-partial" type="text/x-handlebars-template">
+  {{#each countries}}
+  <tr class="table-content" data-id="{{this.id}}">
+    <td class="td-left input-text"><input type="text" name="name" value="{{this.name}}" disabled></td>
+    <td class="td-center input-text"><input type="text" name="alpha_2_code" value="{{this.alpha_2_code}}" disabled></td>
+    <td class="td-center input-text"><input type="text" name="alpha_3_code" value="{{this.alpha_3_code}}" disabled></td>
+    <td class="td-center input-text"><input type="text" name="numeric_code" value="{{this.numeric_code}}" disabled></td>
+    {{#if this.status}}
+      <td class="td-center"><input type="checkbox" name="status" checked></td>
+    {{else}}
+      <td class="td-center"><input type="checkbox" name="status"></td>
+    {{/if}}
+    <td class="td-center update"><button type="submit" data-id="{{this.id}}"><i class="fas fa-exchange fa-sm"></i></button></td>
+    <td class="td-center delete"><button data-id="{{this.id}}"><i class="far fa-trash-alt fa-sm"></i></button></td>
+  </tr>
+  {{/each}}
+</script>
+
+<script id="country-form-template" type="text/x-handlebars-template">
+  <header class="modal-header">
+    <h3>New Country</p>
+  </header>
+  <form id="new_country" action="/countries" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div>
+      <label for="country_name">Name</label>
+      <input type="text" name="country[name]" id="country_name">
+    </div>
+    <div>
+      <label for="country_alpha_2_code">ISO Alpha-2 Code</label>
+      <input type="text" name="country[alpha_2_code]" id="country_alpha_2_code">
+    </div>
+    <div>
+      <label for="country_alpha_3_code">ISO Alpha-3 Code</label>
+      <input type="text" name="country[alpha_3_code]" id="country_alpha_3_code">
+    </div>
+    <div>
+      <label for="country_numeric_code">Numeric Code</label>
+      <input type="text" name="country[numeric_code]" id="country_numeric_code">
+    </div>
+    <div>
+      <input value="true" type="hidden" name="country[status]" id="country_status">
+      <button type="reset">Reset</button>
+      <button type="submit" name="commit">Create</button>
+    </div>
+  </form>
+</script>
