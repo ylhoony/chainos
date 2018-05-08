@@ -1,0 +1,34 @@
+new account page
+
+
+<%= form_for @account do |f| %>
+
+  <div class="field">
+    <%= f.label :name, "Company Name: " %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :currency_id, "Base Currency: " %>
+    <%= f.collection_select :currency_id, :id, :name, prompt: true %><br/>
+  </div>
+
+  <div class="field">
+    <%= f.label :country_id, "Country: " %>
+    <%= f.collection_select :country_id, active_countries, :id, :name, prompt: true %><br/>
+  </div>
+
+  <% if current_page?(action: :new) %>
+    <%= f.hidden_field :active, value: true %>
+  <% elsif current_page?(action: :edit) %>
+    <div class="field">
+      <%= f.label :active, "Active?" %>
+      <%= f.hidden_field :active, value: 0 %>
+      <%= f.check_box :active %><br/>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
