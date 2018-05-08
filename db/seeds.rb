@@ -255,3 +255,185 @@ countries = Country.create([
   { name: "Zambia", alpha_2_code: "ZM", alpha_3_code: "ZMB", numeric_code: "894", status: 1 },
   { name: "Zimbabwe", alpha_2_code: "ZW", alpha_3_code: "ZWE", numeric_code: "716", status: 1 },
 ])
+
+
+currencies = Currency.create([
+  { name: "United Arab Emirates dirham", alpha_3_code: "AED", numeric_code: "784", status: 1 }
+  { name: "Afghan afghani", alpha_3_code: "AFN", numeric_code: "971", status: 1 }
+  { name: "Albanian lek", alpha_3_code: "ALL", numeric_code: "008", status: 1 }
+  { name: "Armenian dram", alpha_3_code: "AMD", numeric_code: "051", status: 1 }
+  { name: "Netherlands Antillean guilder", alpha_3_code: "ANG", numeric_code: "532", status: 1 }
+  { name: "Angolan kwanza", alpha_3_code: "AOA", numeric_code: "973", status: 1 }
+  { name: "Argentine peso", alpha_3_code: "ARS", numeric_code: "032", status: 1 }
+  { name: "Australian dollar", alpha_3_code: "AUD", numeric_code: "036", status: 1 }
+  { name: "Aruban florin", alpha_3_code: "AWG", numeric_code: "533", status: 1 }
+  { name: "Azerbaijani manat", alpha_3_code: "AZN", numeric_code: "944", status: 1 }
+  { name: "Bosnia and Herzegovina convertible mark", alpha_3_code: "BAM", numeric_code: "977", status: 1 }
+  { name: "Barbados dollar", alpha_3_code: "BBD", numeric_code: "052", status: 1 }
+  { name: "Bangladeshi taka", alpha_3_code: "BDT", numeric_code: "050", status: 1 }
+  { name: "Bulgarian lev", alpha_3_code: "BGN", numeric_code: "975", status: 1 }
+  { name: "Bahraini dinar", alpha_3_code: "BHD", numeric_code: "048", status: 1 }
+  { name: "Burundian franc", alpha_3_code: "BIF", numeric_code: "108", status: 1 }
+  { name: "Bermudian dollar", alpha_3_code: "BMD", numeric_code: "060", status: 1 }
+  { name: "Brunei dollar", alpha_3_code: "BND", numeric_code: "096", status: 1 }
+  { name: "Boliviano", alpha_3_code: "BOB", numeric_code: "068", status: 1 }
+  { name: "Bolivian Mvdol (funds code)", alpha_3_code: "BOV", numeric_code: "984", status: 1 }
+  { name: "Brazilian real", alpha_3_code: "BRL", numeric_code: "986", status: 1 }
+  { name: "Bahamian dollar", alpha_3_code: "BSD", numeric_code: "044", status: 1 }
+  { name: "Bhutanese ngultrum", alpha_3_code: "BTN", numeric_code: "064", status: 1 }
+  { name: "Botswana pula", alpha_3_code: "BWP", numeric_code: "072", status: 1 }
+  { name: "Belarusian ruble", alpha_3_code: "BYN", numeric_code: "933", status: 1 }
+  { name: "Belize dollar", alpha_3_code: "BZD", numeric_code: "084", status: 1 }
+  { name: "Canadian dollar", alpha_3_code: "CAD", numeric_code: "124", status: 1 }
+  { name: "Congolese franc", alpha_3_code: "CDF", numeric_code: "976", status: 1 }
+  { name: "WIR Euro (complementary currency)", alpha_3_code: "CHE", numeric_code: "947", status: 1 }
+  { name: "Swiss franc", alpha_3_code: "CHF", numeric_code: "756", status: 1 }
+  { name: "WIR Franc (complementary currency)", alpha_3_code: "CHW", numeric_code: "948", status: 1 }
+  { name: "Unidad de Fomento (funds code)", alpha_3_code: "CLF", numeric_code: "990", status: 1 }
+  { name: "Chilean peso", alpha_3_code: "CLP", numeric_code: "152", status: 1 }
+  { name: "Renminbi (Chinese) yuan[8]", alpha_3_code: "CNY", numeric_code: "156", status: 1 }
+  { name: "Colombian peso", alpha_3_code: "COP", numeric_code: "170", status: 1 }
+  { name: "Unidad de Valor Real (UVR) (funds code)[9]", alpha_3_code: "COU", numeric_code: "970", status: 1 }
+  { name: "Costa Rican colon", alpha_3_code: "CRC", numeric_code: "188", status: 1 }
+  { name: "Cuban convertible peso", alpha_3_code: "CUC", numeric_code: "931", status: 1 }
+  { name: "Cuban peso", alpha_3_code: "CUP", numeric_code: "192", status: 1 }
+  { name: "Cape Verde escudo", alpha_3_code: "CVE", numeric_code: "132", status: 1 }
+  { name: "Czech koruna", alpha_3_code: "CZK", numeric_code: "203", status: 1 }
+  { name: "Djiboutian franc", alpha_3_code: "DJF", numeric_code: "262", status: 1 }
+  { name: "Danish krone", alpha_3_code: "DKK", numeric_code: "208", status: 1 }
+  { name: "Dominican peso", alpha_3_code: "DOP", numeric_code: "214", status: 1 }
+  { name: "Algerian dinar", alpha_3_code: "DZD", numeric_code: "012", status: 1 }
+  { name: "Egyptian pound", alpha_3_code: "EGP", numeric_code: "818", status: 1 }
+  { name: "Eritrean nakfa", alpha_3_code: "ERN", numeric_code: "232", status: 1 }
+  { name: "Ethiopian birr", alpha_3_code: "ETB", numeric_code: "230", status: 1 }
+  { name: "Euro", alpha_3_code: "EUR", numeric_code: "978", status: 1 }
+  { name: "Fiji dollar", alpha_3_code: "FJD", numeric_code: "242", status: 1 }
+  { name: "Falkland Islands pound", alpha_3_code: "FKP", numeric_code: "238", status: 1 }
+  { name: "Pound sterling", alpha_3_code: "GBP", numeric_code: "826", status: 1 }
+  { name: "Georgian lari", alpha_3_code: "GEL", numeric_code: "981", status: 1 }
+  { name: "Ghanaian cedi", alpha_3_code: "GHS", numeric_code: "936", status: 1 }
+  { name: "Gibraltar pound", alpha_3_code: "GIP", numeric_code: "292", status: 1 }
+  { name: "Gambian dalasi", alpha_3_code: "GMD", numeric_code: "270", status: 1 }
+  { name: "Guinean franc", alpha_3_code: "GNF", numeric_code: "324", status: 1 }
+  { name: "Guatemalan quetzal", alpha_3_code: "GTQ", numeric_code: "320", status: 1 }
+  { name: "Guyanese dollar", alpha_3_code: "GYD", numeric_code: "328", status: 1 }
+  { name: "Hong Kong dollar", alpha_3_code: "HKD", numeric_code: "344", status: 1 }
+  { name: "Honduran lempira", alpha_3_code: "HNL", numeric_code: "340", status: 1 }
+  { name: "Croatian kuna", alpha_3_code: "HRK", numeric_code: "191", status: 1 }
+  { name: "Haitian gourde", alpha_3_code: "HTG", numeric_code: "332", status: 1 }
+  { name: "Hungarian forint", alpha_3_code: "HUF", numeric_code: "348", status: 1 }
+  { name: "Indonesian rupiah", alpha_3_code: "IDR", numeric_code: "360", status: 1 }
+  { name: "Israeli new shekel", alpha_3_code: "ILS", numeric_code: "376", status: 1 }
+  { name: "Indian rupee", alpha_3_code: "INR", numeric_code: "356", status: 1 }
+  { name: "Iraqi dinar", alpha_3_code: "IQD", numeric_code: "368", status: 1 }
+  { name: "Iranian rial", alpha_3_code: "IRR", numeric_code: "364", status: 1 }
+  { name: "Icelandic króna", alpha_3_code: "ISK", numeric_code: "352", status: 1 }
+  { name: "Jamaican dollar", alpha_3_code: "JMD", numeric_code: "388", status: 1 }
+  { name: "Jordanian dinar", alpha_3_code: "JOD", numeric_code: "400", status: 1 }
+  { name: "Japanese yen", alpha_3_code: "JPY", numeric_code: "392", status: 1 }
+  { name: "Kenyan shilling", alpha_3_code: "KES", numeric_code: "404", status: 1 }
+  { name: "Kyrgyzstani som", alpha_3_code: "KGS", numeric_code: "417", status: 1 }
+  { name: "Cambodian riel", alpha_3_code: "KHR", numeric_code: "116", status: 1 }
+  { name: "Comoro franc", alpha_3_code: "KMF", numeric_code: "174", status: 1 }
+  { name: "North Korean won", alpha_3_code: "KPW", numeric_code: "408", status: 1 }
+  { name: "South Korean won", alpha_3_code: "KRW", numeric_code: "410", status: 1 }
+  { name: "Kuwaiti dinar", alpha_3_code: "KWD", numeric_code: "414", status: 1 }
+  { name: "Cayman Islands dollar", alpha_3_code: "KYD", numeric_code: "136", status: 1 }
+  { name: "Kazakhstani tenge", alpha_3_code: "KZT", numeric_code: "398", status: 1 }
+  { name: "Lao kip", alpha_3_code: "LAK", numeric_code: "418", status: 1 }
+  { name: "Lebanese pound", alpha_3_code: "LBP", numeric_code: "422", status: 1 }
+  { name: "Sri Lankan rupee", alpha_3_code: "LKR", numeric_code: "144", status: 1 }
+  { name: "Liberian dollar", alpha_3_code: "LRD", numeric_code: "430", status: 1 }
+  { name: "Lesotho loti", alpha_3_code: "LSL", numeric_code: "426", status: 1 }
+  { name: "Libyan dinar", alpha_3_code: "LYD", numeric_code: "434", status: 1 }
+  { name: "Moroccan dirham", alpha_3_code: "MAD", numeric_code: "504", status: 1 }
+  { name: "Moldovan leu", alpha_3_code: "MDL", numeric_code: "498", status: 1 }
+  { name: "Malagasy ariary", alpha_3_code: "MGA", numeric_code: "969", status: 1 }
+  { name: "Macedonian denar", alpha_3_code: "MKD", numeric_code: "807", status: 1 }
+  { name: "Myanmar kyat", alpha_3_code: "MMK", numeric_code: "104", status: 1 }
+  { name: "Mongolian tögrög", alpha_3_code: "MNT", numeric_code: "496", status: 1 }
+  { name: "Macanese pataca", alpha_3_code: "MOP", numeric_code: "446", status: 1 }
+  { name: "Mauritanian ouguiya", alpha_3_code: "MRU[12]", numeric_code: "929", status: 1 }
+  { name: "Mauritian rupee", alpha_3_code: "MUR", numeric_code: "480", status: 1 }
+  { name: "Maldivian rufiyaa", alpha_3_code: "MVR", numeric_code: "462", status: 1 }
+  { name: "Malawian kwacha", alpha_3_code: "MWK", numeric_code: "454", status: 1 }
+  { name: "Mexican peso", alpha_3_code: "MXN", numeric_code: "484", status: 1 }
+  { name: "Mexican Unidad de Inversion (UDI) (funds code)", alpha_3_code: "MXV", numeric_code: "979", status: 1 }
+  { name: "Malaysian ringgit", alpha_3_code: "MYR", numeric_code: "458", status: 1 }
+  { name: "Mozambican metical", alpha_3_code: "MZN", numeric_code: "943", status: 1 }
+  { name: "Namibian dollar", alpha_3_code: "NAD", numeric_code: "516", status: 1 }
+  { name: "Nigerian naira", alpha_3_code: "NGN", numeric_code: "566", status: 1 }
+  { name: "Nicaraguan córdoba", alpha_3_code: "NIO", numeric_code: "558", status: 1 }
+  { name: "Norwegian krone", alpha_3_code: "NOK", numeric_code: "578", status: 1 }
+  { name: "Nepalese rupee", alpha_3_code: "NPR", numeric_code: "524", status: 1 }
+  { name: "New Zealand dollar", alpha_3_code: "NZD", numeric_code: "554", status: 1 }
+  { name: "Omani rial", alpha_3_code: "OMR", numeric_code: "512", status: 1 }
+  { name: "Panamanian balboa", alpha_3_code: "PAB", numeric_code: "590", status: 1 }
+  { name: "Peruvian Sol", alpha_3_code: "PEN", numeric_code: "604", status: 1 }
+  { name: "Papua New Guinean kina", alpha_3_code: "PGK", numeric_code: "598", status: 1 }
+  { name: "Philippine piso[13]", alpha_3_code: "PHP", numeric_code: "608", status: 1 }
+  { name: "Pakistani rupee", alpha_3_code: "PKR", numeric_code: "586", status: 1 }
+  { name: "Polish złoty", alpha_3_code: "PLN", numeric_code: "985", status: 1 }
+  { name: "Paraguayan guaraní", alpha_3_code: "PYG", numeric_code: "600", status: 1 }
+  { name: "Qatari riyal", alpha_3_code: "QAR", numeric_code: "634", status: 1 }
+  { name: "Romanian leu", alpha_3_code: "RON", numeric_code: "946", status: 1 }
+  { name: "Serbian dinar", alpha_3_code: "RSD", numeric_code: "941", status: 1 }
+  { name: "Russian ruble", alpha_3_code: "RUB", numeric_code: "643", status: 1 }
+  { name: "Rwandan franc", alpha_3_code: "RWF", numeric_code: "646", status: 1 }
+  { name: "Saudi riyal", alpha_3_code: "SAR", numeric_code: "682", status: 1 }
+  { name: "Solomon Islands dollar", alpha_3_code: "SBD", numeric_code: "090", status: 1 }
+  { name: "Seychelles rupee", alpha_3_code: "SCR", numeric_code: "690", status: 1 }
+  { name: "Sudanese pound", alpha_3_code: "SDG", numeric_code: "938", status: 1 }
+  { name: "Swedish krona/kronor", alpha_3_code: "SEK", numeric_code: "752", status: 1 }
+  { name: "Singapore dollar", alpha_3_code: "SGD", numeric_code: "702", status: 1 }
+  { name: "Saint Helena pound", alpha_3_code: "SHP", numeric_code: "654", status: 1 }
+  { name: "Sierra Leonean leone", alpha_3_code: "SLL", numeric_code: "694", status: 1 }
+  { name: "Somali shilling", alpha_3_code: "SOS", numeric_code: "706", status: 1 }
+  { name: "Surinamese dollar", alpha_3_code: "SRD", numeric_code: "968", status: 1 }
+  { name: "South Sudanese pound", alpha_3_code: "SSP", numeric_code: "728", status: 1 }
+  { name: "São Tomé and Príncipe dobra", alpha_3_code: "STN[14]", numeric_code: "930", status: 1 }
+  { name: "Salvadoran colón", alpha_3_code: "SVC", numeric_code: "222", status: 1 }
+  { name: "Syrian pound", alpha_3_code: "SYP", numeric_code: "760", status: 1 }
+  { name: "Swazi lilangeni", alpha_3_code: "SZL", numeric_code: "748", status: 1 }
+  { name: "Thai baht", alpha_3_code: "THB", numeric_code: "764", status: 1 }
+  { name: "Tajikistani somoni", alpha_3_code: "TJS", numeric_code: "972", status: 1 }
+  { name: "Turkmenistan manat", alpha_3_code: "TMT", numeric_code: "934", status: 1 }
+  { name: "Tunisian dinar", alpha_3_code: "TND", numeric_code: "788", status: 1 }
+  { name: "Tongan paʻanga", alpha_3_code: "TOP", numeric_code: "776", status: 1 }
+  { name: "Turkish lira", alpha_3_code: "TRY", numeric_code: "949", status: 1 }
+  { name: "Trinidad and Tobago dollar", alpha_3_code: "TTD", numeric_code: "780", status: 1 }
+  { name: "New Taiwan dollar", alpha_3_code: "TWD", numeric_code: "901", status: 1 }
+  { name: "Tanzanian shilling", alpha_3_code: "TZS", numeric_code: "834", status: 1 }
+  { name: "Ukrainian hryvnia", alpha_3_code: "UAH", numeric_code: "980", status: 1 }
+  { name: "Ugandan shilling", alpha_3_code: "UGX", numeric_code: "800", status: 1 }
+  { name: "United States dollar", alpha_3_code: "USD", numeric_code: "840", status: 1 }
+  { name: "United States dollar (next day) (funds code)", alpha_3_code: "USN", numeric_code: "997", status: 1 }
+  { name: "Uruguay Peso en Unidades Indexadas (URUIURUI) (funds code)", alpha_3_code: "UYI", numeric_code: "940", status: 1 }
+  { name: "Uruguayan peso", alpha_3_code: "UYU", numeric_code: "858", status: 1 }
+  { name: "Uzbekistan som", alpha_3_code: "UZS", numeric_code: "860", status: 1 }
+  { name: "Venezuelan bolívar", alpha_3_code: "VEF", numeric_code: "937", status: 1 }
+  { name: "Vietnamese đồng", alpha_3_code: "VND", numeric_code: "704", status: 1 }
+  { name: "Vanuatu vatu", alpha_3_code: "VUV", numeric_code: "548", status: 1 }
+  { name: "Samoan tala", alpha_3_code: "WST", numeric_code: "882", status: 1 }
+  { name: "CFA franc BEAC", alpha_3_code: "XAF", numeric_code: "950", status: 1 }
+  { name: "Silver (one troy ounce)", alpha_3_code: "XAG", numeric_code: "961", status: 1 }
+  { name: "Gold (one troy ounce)", alpha_3_code: "XAU", numeric_code: "959", status: 1 }
+  { name: "European Composite Unit (EURCO) (bond market unit)", alpha_3_code: "XBA", numeric_code: "955", status: 1 }
+  { name: "European Monetary Unit (E.M.U.-6) (bond market unit)", alpha_3_code: "XBB", numeric_code: "956", status: 1 }
+  { name: "European Unit of Account 9 (E.U.A.-9) (bond market unit)", alpha_3_code: "XBC", numeric_code: "957", status: 1 }
+  { name: "European Unit of Account 17 (E.U.A.-17) (bond market unit)", alpha_3_code: "XBD", numeric_code: "958", status: 1 }
+  { name: "East Caribbean dollar", alpha_3_code: "XCD", numeric_code: "951", status: 1 }
+  { name: "Special drawing rights", alpha_3_code: "XDR", numeric_code: "960", status: 1 }
+  { name: "CFA franc BCEAO", alpha_3_code: "XOF", numeric_code: "952", status: 1 }
+  { name: "Palladium (one troy ounce)", alpha_3_code: "XPD", numeric_code: "964", status: 1 }
+  { name: "CFP franc (franc Pacifique)", alpha_3_code: "XPF", numeric_code: "953", status: 1 }
+  { name: "Platinum (one troy ounce)", alpha_3_code: "XPT", numeric_code: "962", status: 1 }
+  { name: "SUCRE", alpha_3_code: "XSU", numeric_code: "994", status: 1 }
+  { name: "Code reserved for testing purposes", alpha_3_code: "XTS", numeric_code: "963", status: 1 }
+  { name: "ADB Unit of Account", alpha_3_code: "XUA", numeric_code: "965", status: 1 }
+  { name: "No currency", alpha_3_code: "XXX", numeric_code: "999", status: 1 }
+  { name: "Yemeni rial", alpha_3_code: "YER", numeric_code: "886", status: 1 }
+  { name: "South African rand", alpha_3_code: "ZAR", numeric_code: "710", status: 1 }
+  { name: "Zambian kwacha", alpha_3_code: "ZMW", numeric_code: "967", status: 1 }
+  { name: "Zimbabwean dollar A/10", alpha_3_code: "ZWL", numeric_code: "932", status: 1 }
+])
