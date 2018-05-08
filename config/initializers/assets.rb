@@ -22,4 +22,6 @@ Rails.application.config.assets.precompile += %w(
   navigations.css
   countries.js
   countries.css
+  accounts.js
+  accounts.css
 )
