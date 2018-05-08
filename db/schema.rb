@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20180507194128) do
 
   create_table "employees", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
