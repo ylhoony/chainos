@@ -8,9 +8,9 @@ function displayCurrenciesList(data) {
     const chunk = {
         currency: {
           name: $row[0].value,
-          alpha_3_code: $row[2].value,
-          numeric_code: $row[3].value,
-          status: $row[4].checked
+          alpha_3_code: $row[1].value,
+          numeric_code: $row[2].value,
+          status: $row[3].checked
         }
     }
 
