@@ -55,14 +55,17 @@ function displayCountriesList(data) {
 }
 
 function getCountriesList() {
-  fetch("/countries", {
-    method: 'get',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }})
-    .then(res => res.json())
-    .then(data => displayCountriesList(data))
+  $.ajax({
+    url: "/countries",
+    method: "get",
+    dataType: "json"
+  })
+  .done((res) => {
+    displayCountriesList(res);
+  })
+  .fail((err) => {
+    console.log("error!");
+  })
 }
 
 function handlebarsSetup() { 
