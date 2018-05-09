@@ -1,47 +1,52 @@
-new account page
+<section id="breadcrumb">
+  Home > Accounts > New
+</section>
+
+<section id="content">
+  <header id="content-header">
+    <h2>New Account</h2>
+
+  </header>
+
+  <main id="content-body">
 
 
-<form class="new_account" id="new_account" action="/accounts" accept-charset="UTF-8" method="post">
-  <input name="utf8" type="hidden" value="✓">
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </main>
 
-  <div class="field">
-    <label for="account_name">Company Name: </label>
-    <input type="text" name="account[name]" id="account_name">
-  </div>
+  <footer id="content-footer">
 
-  <div class="field">
-    <label for="account_currency_id">Base Currency: </label>
-    <select name="account[currency_id]" id="account_currency_id">
-      <option value="">Please select</option>
-      <option value="2">Afghan afghani</option>
-      <option value="3">Albanian lek</option>
-      <option value="4">Armenian dram</option>
-      <option value="5">Netherlands Antillean guilder</option>
-      <option value="6">Angolan kwanza</option>
-      <option value="7">Argentine peso</option>
-    </select><br>
-  </div>
+  </footer>
+</section>
 
-  <div class="field">
-    <label for="account_country_id">Country: </label>
-    <select name="account[country_id]" id="account_country_id">
-      <option value="">Please select</option>
-      <option value="1">Afghanistan</option>
-      <option value="2">Aland Islands</option>
-      <option value="3">Albania</option>
-      <option value="4">Algeria</option>
-      <option value="5">American Samoa</option>
-      <option value="6">Andorra</option>
-      <option value="7">Angola</option>
-      <option value="8">Anguilla</option>
-    </select><br>
-  </div>
+<script id="account-form-template" type="text/x-handlebars-template">
+  <form class="new_account" id="new_account" action="/accounts" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-  <input value="true" type="hidden" name="account[status]" id="account_status">
+    <div class="field">
+      <label for="account_name">Company Name: </label>
+      <input type="text" name="account[name]" id="account_name">
+    </div>
 
-  <div class="actions">
-    <input type="submit" name="commit" value="Create Account" data-disable-with="Create Account">
-  </div>
+    <div class="field">
+      <label for="account_currency_id">Base Currency: </label>
+      <select name="account[currency_id]" id="account_currency_id">
+        <option value="">Please select</option>
+      </select><br>
+    </div>
 
-</form>
+    <div class="field">
+      <label for="account_country_id">Country: </label>
+      <select name="account[country_id]" id="account_country_id">
+        <option value="">Please select</option>
+      </select><br>
+    </div>
+
+    <input value="true" type="hidden" name="account[status]" id="account_status">
+
+    <div class="actions">
+      <input type="submit" name="commit" value="Create Account" data-disable-with="Create Account">
+    </div>
+
+  </form>
+</script>
