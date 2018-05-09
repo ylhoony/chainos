@@ -1,34 +1,47 @@
 new account page
 
 
-<%= form_for @account do |f| %>
+<form class="new_account" id="new_account" action="/accounts" accept-charset="UTF-8" method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
   <div class="field">
-    <%= f.label :name, "Company Name: " %>
-    <%= f.text_field :name %>
+    <label for="account_name">Company Name: </label>
+    <input type="text" name="account[name]" id="account_name">
   </div>
 
   <div class="field">
-    <%= f.label :currency_id, "Base Currency: " %>
-    <%= f.collection_select :currency_id, active_currencies, :id, :name, prompt: true %><br/>
+    <label for="account_currency_id">Base Currency: </label>
+    <select name="account[currency_id]" id="account_currency_id">
+      <option value="">Please select</option>
+      <option value="2">Afghan afghani</option>
+      <option value="3">Albanian lek</option>
+      <option value="4">Armenian dram</option>
+      <option value="5">Netherlands Antillean guilder</option>
+      <option value="6">Angolan kwanza</option>
+      <option value="7">Argentine peso</option>
+    </select><br>
   </div>
 
   <div class="field">
-    <%= f.label :country_id, "Country: " %>
-    <%= f.collection_select :country_id, active_countries, :id, :name, prompt: true %><br/>
+    <label for="account_country_id">Country: </label>
+    <select name="account[country_id]" id="account_country_id">
+      <option value="">Please select</option>
+      <option value="1">Afghanistan</option>
+      <option value="2">Aland Islands</option>
+      <option value="3">Albania</option>
+      <option value="4">Algeria</option>
+      <option value="5">American Samoa</option>
+      <option value="6">Andorra</option>
+      <option value="7">Angola</option>
+      <option value="8">Anguilla</option>
+    </select><br>
   </div>
 
-  <% if current_page?(action: :new) %>
-    <%= f.hidden_field :active, value: true %>
-  <% elsif current_page?(action: :edit) %>
-    <div class="field">
-      <%= f.label :active, "Active?" %>
-      <%= f.hidden_field :active, value: 0 %>
-      <%= f.check_box :active %><br/>
-    </div>
-  <% end %>
+  <input value="true" type="hidden" name="account[status]" id="account_status">
 
   <div class="actions">
-    <%= f.submit %>
+    <input type="submit" name="commit" value="Create Account" data-disable-with="Create Account">
   </div>
-<% end %>
+
+</form>
