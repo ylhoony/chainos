@@ -1,14 +1,13 @@
-function displayCountriesList(data) {
-  const template = Handlebars.compile(document.getElementById("country-template").innerHTML);
-  const list = { countries: data };
+function displayCurrenciesList(data) {
+  const template = Handlebars.compile(document.getElementById("currency-template").innerHTML);
+  const list = { currencies: data };
   document.getElementById("content-table").innerHTML = template(list);
 
   $(".update button").click(function(e){
     $row = $(this).parents(".table-content").find("input");
     const chunk = {
-        country: {
+        currency: {
           name: $row[0].value,
-          alpha_2_code: $row[1].value,
           alpha_3_code: $row[2].value,
           numeric_code: $row[3].value,
           status: $row[4].checked
@@ -16,13 +15,13 @@ function displayCountriesList(data) {
     }
 
     $.ajax({
-      url: `/countries/${$(this).data("id")}`,
+      url: `/currencies/${$(this).data("id")}`,
       method: "put",
       data: chunk,
       dataType: "json"
     })
     .done((res) => {
-      getCountriesList();
+      getCurrenciesList();
     })
     .fail((err) => {
       alert( "error" );
@@ -32,12 +31,12 @@ function displayCountriesList(data) {
 
   $(".delete button").click(function(e){
     $.ajax({
-      url: `/countries/${$(this).data("id")}`,
+      url: `/currencies/${$(this).data("id")}`,
       method: "delete",
       dataType: "json"
     })
     .done((res) => {
-      getCountriesList();
+      getCurrenciesList();
     })
     .fail((err) => {
       console.log("error!");
@@ -54,24 +53,27 @@ function displayCountriesList(data) {
   });
 }
 
-function getCountriesList() {
-  fetch("/countries", {
-    method: 'get',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }})
-    .then(res => res.json())
-    .then(data => displayCountriesList(data))
+function getCurrenciesList() {
+  $.ajax({
+    url: "/currencies",
+    method: "get",
+    dataType: "json"
+  })
+  .done((res) => {
+    displayCurrenciesList(res);
+  })
+  .fail((err) => {
+    console.log("error!");
+  })
 }
 
 function handlebarsSetup() { 
-  Handlebars.registerPartial('countryDetailsPartial', document.getElementById("country-details-partial").innerHTML)
+  Handlebars.registerPartial('currencyDetailsPartial', document.getElementById("currency-details-partial").innerHTML)
 }
 
 function init() {
   handlebarsSetup();
-  getCountriesList();
+  getCurrenciesList();
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -81,15 +83,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 $(function() {
   $(".create button").click(function() {
     $(".modal").css("display", "unset");
-    const template = Handlebars.compile(document.getElementById("country-form-template").innerHTML);
-    document.getElementById("modal-content-country").innerHTML = template();
-    const top = (window.innerHeight - $("#modal-content-country").height())/2;
-    const left = (window.innerWidth - $("#modal-content-country").width())/2;
+    const template = Handlebars.compile(document.getElementById("currency-form-template").innerHTML);
+    document.getElementById("modal-content-currency").innerHTML = template();
+    const top = (window.innerHeight - $("#modal-content-currency").height())/2;
+    const left = (window.innerWidth - $("#modal-content-currency").width())/2;
     
-    $("#modal-content-country").css("top", top);
-    $("#modal-content-country").css("left", left);
+    $("#modal-content-currency").css("top", top);
+    $("#modal-content-currency").css("left", left);
 
-    $("form#new_country").submit(function(e) {
+    $("form#new_currency").submit(function(e) {
       e.preventDefault();
       const $form = $(this);
       const action = $form.attr("action");
@@ -103,7 +105,7 @@ $(function() {
       })
       .done((res) => {
         $(".modal").css("display", "none");
-        getCountriesList();
+        getCurrenciesList();
       })
       .fail((err) => {
         alert( "error" );
