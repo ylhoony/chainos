@@ -55,9 +55,9 @@
 
 <script id="currency-form-template" type="text/x-handlebars-template">
   <header class="modal-header">
-    <h3>New currency</p>
+    <h3>New Currency</p>
   </header>
-  <form id="new_currency" action="/countries" accept-charset="UTF-8" method="post">
+  <form id="new_currency" action="/currencies" accept-charset="UTF-8" method="post">
     <input name="utf8" type="hidden" value="✓">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <div>
