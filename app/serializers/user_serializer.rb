@@ -1,6 +1,6 @@
-class AccountSerializer < ActiveModel::Serializer
+class UserSerializer < ActiveModel::Serializer
   has_many :employees
 
-  attributes :id, :name
+  attributes :id, :first_name, :last_name, :email, :phone
 
 end
