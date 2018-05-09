@@ -52,6 +52,13 @@ class CountriesController < ApplicationController
     end    
   end
 
+  def active
+    @countries = Country.active_countries
+    respond_to do |format|
+      format.json { render json: @countries, status: 201 }
+    end
+  end
+
   private
 
   def country_params

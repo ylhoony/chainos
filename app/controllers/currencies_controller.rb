@@ -52,6 +52,13 @@ class CurrenciesController < ApplicationController
     end    
   end
 
+  def active
+    @currencies = Currency.active_currencies
+    respond_to do |format|
+      format.json { render json: @currencies, status: 201 }
+    end
+  end
+
   private
 
   def currency_params
