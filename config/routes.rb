@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   resources :employees
   resources :accounts
+  
+  get "/currencies/active", to: "currencies#active"
   resources :currencies
+  
+  get "/countries/active", to: "countries#active"
   resources :countries
+  
   devise_for :users, controllers: {
     registrations: "users/registrations",
     sessions: "users/sessions"
