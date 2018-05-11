@@ -21,7 +21,6 @@
       <th>Account Name</th>
       <th>Country</th>
       <th>Currency</th>
-      <th>Status</th>
       <th></th>
     </tr>
     {{> accountListPartial }}
@@ -32,10 +31,9 @@
   {{#each accounts}}
   <tr>
     <td>{{this.name}}</td>
-    <td>country</td>
-    <td>currency</td>
-    <td>OX</td>
+    <td>{{this.country.name}}</td>
+    <td>{{this.currency.name}}</td>
     <td></td>
   </tr>
-   {{/each}}
+  {{/each}}
 </script>
