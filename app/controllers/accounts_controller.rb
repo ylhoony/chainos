@@ -19,7 +19,7 @@ class AccountsController < ApplicationController
       @account.employees.create(user_id: current_user.id, account_id: @account.id)
       respond_to do |format|
         format.html { render :index }
-        format.json { render json: @accounts, status: 201 }
+        format.json { render json: @account, status: 201 }
       end
     else
       respond_to do |format|
