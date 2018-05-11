@@ -69,8 +69,6 @@
 
 // // // // // //
 
-
-
 const initIndex = () => {
   let data = new Object;
   const source = document.getElementById("account-list-template").innerHTML;
@@ -95,8 +93,10 @@ const handlebarsSetup = () => {
 }
 
 const init = () => {
-  handlebarsSetup();
-  initIndex();
+  if (($.ajaxSettings.url).endsWith("/accounts") || ($.ajaxSettings.url).endsWith("/accounts/")) {
+    handlebarsSetup();
+    initIndex();
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
