@@ -37,6 +37,9 @@
     <select name="account[currency_id]" id="account_currency_id">
       <option value="">Please select</option>
       <!-- need currency options -->
+      {{#each currencies}}
+      {{ displayOption this }}
+      {{/each}}
     </select><br>
   </div>
 
@@ -45,6 +48,9 @@
     <select name="account[country_id]" id="account_country_id">
       <option value="">Please select</option>
       <!-- need country options -->
+      {{#each countries}}
+      {{ displayOption this }}
+      {{/each}}
     </select><br>
   </div>
 
