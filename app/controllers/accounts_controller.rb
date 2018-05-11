@@ -30,7 +30,10 @@ class AccountsController < ApplicationController
   end
 
   def show
-
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @account, status: 201 }
+    end
   end
 
   def edit
