@@ -1,3 +1,41 @@
-account_index page
+<section id="breadcrumb">
+  Home > Accounts
+</section>
 
-<%= link_to "Create Company Account", new_account_path %>
+<section id="content">
+  <header id="content-header">
+    <h2>Accounts</h2>
+    <div class="create"><button><i class="far fa-plus fa-lg"></i></button></div>
+  </header>
+  <main id="content-table">
+    <!-- input Handlebar country-template -->
+  </main>
+  <footer id="content-footer">
+    <div class="create"><button><i class="far fa-plus fa-lg"></i></button></div>
+  </footer>
+</section>
+
+<script id="account-list-template" type="text/x-handlebars-template">
+  <table>
+    <tr class="table-header">
+      <th>Account Name</th>
+      <th>Country</th>
+      <th>Currency</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+    {{> accountListPartial }}
+  </table>
+</script>
+
+<script id="account-list-partial" type="text/x-handlebars-template">
+  {{#each accounts}}
+  <tr>
+    <td>{{this.name}}</td>
+    <td>country</td>
+    <td>currency</td>
+    <td>OX</td>
+    <td></td>
+  </tr>
+   {{/each}}
+</script>
