@@ -7,8 +7,7 @@
     <h2>Accounts</h2>
     <div class="create"><button><i class="far fa-plus fa-lg"></i></button></div>
   </header>
-  <main id="content-table">
-    <!-- input Handlebar country-template -->
+  <main id="content-main">
   </main>
   <footer id="content-footer">
     <div class="create"><button><i class="far fa-plus fa-lg"></i></button></div>
@@ -36,4 +35,42 @@
     <td></td>
   </tr>
   {{/each}}
+</script>
+
+<script id="account-form-template" type="text/x-handlebars-template">
+  <form class="new_account" id="new_account" action="/accounts" accept-charset="UTF-8" method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <div class="field">
+      <label for="account_name">Company Name: </label>
+      <input type="text" name="account[name]" id="account_name">
+    </div>
+
+    <div class="field">
+      <label for="account_currency_id">Base Currency: </label>
+      <select name="account[currency_id]" id="account_currency_id">
+        <option value="">Please select</option>
+        {{#each currencies}}
+        {{displayOptions this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="account_country_id">Country: </label>
+      <select name="account[country_id]" id="account_country_id">
+        <option value="">Please select</option>
+        {{#each countries}}
+        {{displayOptions this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+      <input value="true" type="hidden" name="account[active]" id="account_active">
+
+    <div class="actions">
+      <input type="submit" name="commit" value="Create Account" data-disable-with="Create Account">
+    </div>
+  </form>
 </script>
