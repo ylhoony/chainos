@@ -1,74 +1,3 @@
-// const initForm = () => {
-//   let data = new Object;
-
-//   const formTemplate = document.getElementById("account-form-template").innerHTML;
-//   const template = Handlebars.compile(formTemplate);
-
-//   // need to optimize - not sure how to find out 
-//   // when it is getting all the data in to data object
-//   $.ajax({
-//     method: "get",
-//     url: "/countries/active",
-//     dataType: "json"
-//   })
-//     .done((res) => {
-//       data.countries = res;
-//       document.getElementById("content-body").innerHTML = template(data);
-//     })
-//     .fail(err => console.log(err))
-
-//   $.ajax({
-//     method: "get",
-//     url: "/currencies/active",
-//     dataType: "json"
-//   })
-//     .done((res) => {
-//       data.currencies = res;
-//       document.getElementById("content-body").innerHTML = template(data);
-//     })
-//     .fail(err => console.log(err))
-//   /////
-  
-//   $("form#new_account").submit(() => {
-//     const $form = $(this);
-//     const action = $form.attr("action");
-//     const params = $form.serialize();
-
-//     $.ajax({
-//       method: "post",
-//       url: action,
-//       data: params,
-//       dataType: "json"
-//     })
-//       .done((res) => {
-//         console.log(res);
-//         // document.location.href = '/accounts'
-//       })
-//       .fail((err) => {
-//         console.log(err);
-//       })
-//   })
-// }
-
-// const handlebarsSetup = () => {
-//   Handlebars.registerPartial('accountFormPartial', document.getElementById("account-form-partial").innerHTML)
-
-//   Handlebars.registerHelper('displayOption', function(item) {
-//     return new Handlebars.SafeString(`<option value="${item.id}">${item.name}</option>`)
-//   })
-// }
-
-// const init = () => {
-//   handlebarsSetup();
-//   initForm();
-// }
-
-// document.addEventListener("DOMContentLoaded", function(event) {
-//   init();
-// });
-
-// // // // // //
-
 const initIndex = () => {
   let data = new Object;
   const source = document.getElementById("account-list-template").innerHTML;
@@ -81,24 +10,77 @@ const initIndex = () => {
   })
     .done((res) => {
       data.accounts = res;
-      $("#content-table").html(template(data));
+      $("#content-main").html(template(data));
     })
     .fail((err) => {
       console.log(err);
     })
+
+  $(".create#button").on("click", () => {
+    let data = new Object;
+    const source = document.getElementById("account-form-template").innerHTML;
+    const template = Handlebars.compile(source);
+
+    $("#content-main").html(template());
+  })
 }
 
-const handlebarsSetup = () => {
+const attachEvents = () => {
+  $(".create").on("click", () => {
+    let data = new Object;
+    const source = document.getElementById("account-form-template").innerHTML;
+    const template = Handlebars.compile(source);
+
+    $.ajax({
+      method: "get",
+      url: "countries/active",
+      dataType: "json"
+    })
+      .done((res) => {
+        data.countries = res;
+        $("#content-main").html(template(data));
+      })
+      .fail((err) => {
+        console.log(err);
+      });
+
+      $.ajax({
+        method: "get",
+        url: "currencies/active",
+        dataType: "json"
+      })
+        .done((res) => {
+          data.currencies = res;
+          // $("#content-main").html(template(data));
+        })
+        .fail((err) => {
+          console.log(err);
+        })
+    
+  })
+}
+
+const handlebarsIndexSetup = () => {
   Handlebars.registerPartial("accountListPartial", document.getElementById("account-list-partial").innerHTML);
+  Handlebars.registerHelper("displayOptions", (item) => {
+    return new Handlebars.SafeString(`<option value="${item.id}">${item.name}</option>`);
+  })
 }
 
 const init = () => {
   if (($.ajaxSettings.url).endsWith("/accounts") || ($.ajaxSettings.url).endsWith("/accounts/")) {
-    handlebarsSetup();
+    handlebarsIndexSetup();
     initIndex();
+  } else {
+    consoel.log("show!")
   }
 }
 
-document.addEventListener("DOMContentLoaded", function(event) {
+// document.addEventListener("DOMContentLoaded", function(event) {
+//   init();
+// });
+
+$(() => {
   init();
-});
+  attachEvents();
+})
