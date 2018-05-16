@@ -26,4 +26,8 @@ Rails.application.config.assets.precompile += %w(
   currencies.css
   accounts.js
   accounts.css
+  payment_options.js
+  payment_options.css
+  employees.js
+  employees.css
 )
