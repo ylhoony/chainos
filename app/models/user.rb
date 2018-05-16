@@ -12,7 +12,7 @@ class User < ApplicationRecord
   end
 
   def current_account
-    Account.find(self.current_account_id) unless current_company_id.nil?
+    Account.find(self.current_account_id) unless current_account_id.nil?
   end
 
 end
