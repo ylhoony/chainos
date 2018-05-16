@@ -11,12 +11,26 @@ const initIndex = () => {
     .done((res) => {
       data.accounts = res;
       $("#content-main").html(template(data));
+
+      $(".to-dashboard").on("click", (e) => {
+        e.preventDefault();
+        const action = $(e.target).attr("href");
+        $.ajax({
+          method: "get",
+          url: action,
+          dataType: "json"
+        })
+          .done(() => {
+            window.location.href = "/dashboard"
+          })
+          .fail((err) => {
+            console.error(err);
+          });
+      });
     })
     .fail((err) => {
       console.log(err);
     })
-
-
 }
 
 const attachEvents = () => {
@@ -46,7 +60,7 @@ const attachEvents = () => {
             dataType: "json"
           })
           .done((res) => {
-            // window.location.href = "/"
+            window.location.href = "/dashboard"
           })
           .fail((err) => {
             console.error(err);
