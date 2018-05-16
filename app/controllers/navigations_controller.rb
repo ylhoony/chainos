@@ -10,7 +10,11 @@ class NavigationsController < ApplicationController
   end
 
   def dashboard
-    
+    current_user.current_account = Account.find(params[:id]) if params[:id]
+    respond_to do |format|
+      format.html { render :dashboard }
+      format.json { render json: current_user, status: 201 }
+    end
   end
 
   def demand
