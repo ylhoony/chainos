@@ -29,7 +29,7 @@
 <script id="account-list-partial" type="text/x-handlebars-template">
   {{#each accounts}}
   <tr>
-    <td>{{this.name}}</td>
+    <td><a href="/dashboard?id={{this.id}}" class="to-dashboard">{{this.name}}</a></td>
     <td>{{this.country.name}}</td>
     <td>{{this.currency.name}}</td>
     <td></td>
