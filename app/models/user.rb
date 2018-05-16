@@ -6,4 +6,13 @@ class User < ApplicationRecord
 
   has_many :employees
   has_many :accounts, through: :employees
+
+  def current_account=(account)
+    self.update(current_account_id: account.id)
+  end
+
+  def current_account
+    Account.find(self.current_account_id) unless current_company_id.nil?
+  end
+
 end
