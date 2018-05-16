@@ -1,0 +1,32 @@
+<%= form_for @payment_option do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
+
+
+<section id="breadcrumb">
+  Home > Payment Options
+</section>
+
+<section id="content">
+  <header id="content-header">
+    <h2>Payment Options</h2>
+    <div class="create"><button><i class="far fa-plus fa-lg"></i></button></div>
+  </header>
+  <main id="content-main">
+  </main>
+  <footer id="content-footer">
+    <div class="create"><button><i class="far fa-plus fa-lg"></i></button></div>
+  </footer>
+</section>
+
+<script id="payment-option-form-template" type="text/x-handlebars-template">
+  <form class="new_payment_option" id="new_payment_option" action="/payment_options" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <label for="payment_option_name" wfd-id="6">Name</label>
+    <input type="text" name="payment_option[name]" id="payment_option_name">
+    <input type="submit" name="commit" value="Create Payment option" data-disable-with="Create Payment option">
+  </form>
+</script>
