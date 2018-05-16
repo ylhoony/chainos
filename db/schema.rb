@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180516014711) do
+ActiveRecord::Schema.define(version: 20180516031253) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.integer "country_id"
     t.integer "currency_id"
-    t.boolean "status"
+    t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20180516014711) do
     t.string "alpha_2_code"
     t.string "alpha_3_code"
     t.string "numeric_code"
-    t.boolean "status"
+    t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20180516014711) do
     t.string "name"
     t.string "alpha_3_code"
     t.string "numeric_code"
-    t.boolean "status"
+    t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20180516014711) do
   create_table "employees", force: :cascade do |t|
     t.integer "user_id"
     t.integer "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payment_options", force: :cascade do |t|
+    t.string "name"
+    t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
