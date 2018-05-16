@@ -16,17 +16,11 @@ const initIndex = () => {
       console.log(err);
     })
 
-  $(".create#button").on("click", () => {
-    let data = new Object;
-    const source = document.getElementById("account-form-template").innerHTML;
-    const template = Handlebars.compile(source);
 
-    $("#content-main").html(template());
-  })
 }
 
 const attachEvents = () => {
-  $(".create").on("click", () => {
+  $(".create button").on("click", () => {
     let data = new Object;
     const source = document.getElementById("account-form-template").innerHTML;
     const template = Handlebars.compile(source);
@@ -39,25 +33,43 @@ const attachEvents = () => {
       .done((res) => {
         data.countries = res;
         $("#content-main").html(template(data));
+
+        $("form#new_account").on("submit", (e)=> {
+          e.preventDefault();
+          const $form = $(e.target);
+          const action = $form.attr("action");
+          const params = $form.serialize();
+          $.ajax({
+            url: action,
+            method: "post",
+            data: params,
+            dataType: "json"
+          })
+          .done((res) => {
+            // window.location.href = "/"
+          })
+          .fail((err) => {
+            console.error(err);
+          });
+        });
       })
       .fail((err) => {
         console.log(err);
       });
 
-      $.ajax({
-        method: "get",
-        url: "currencies/active",
-        dataType: "json"
+    $.ajax({
+      method: "get",
+      url: "currencies/active",
+      dataType: "json"
+    })
+      .done((res) => {
+        data.currencies = res;
+        // $("#content-main").html(template(data));
       })
-        .done((res) => {
-          data.currencies = res;
-          // $("#content-main").html(template(data));
-        })
-        .fail((err) => {
-          console.log(err);
-        })
-    
-  })
+      .fail((err) => {
+        console.log(err);
+      });
+  });
 }
 
 const handlebarsIndexSetup = () => {
