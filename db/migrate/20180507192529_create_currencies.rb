@@ -4,7 +4,7 @@ class CreateCurrencies < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :alpha_3_code
       t.string :numeric_code
-      t.boolean :status
+      t.boolean :status, default: false
 
       t.timestamps null: false
     end
