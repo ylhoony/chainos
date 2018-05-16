@@ -7,11 +7,11 @@ body {
   background-color: #f6f6f6;
 }
 
-main {
+#pg-main {
   padding: 60px 15px 45px;
 }
 
-footer {
+#pg-footer {
   align-items: center;
   background-color: rgba(33, 37, 43, 1);
   bottom: 0px;
@@ -96,13 +96,20 @@ footer {
   border-radius: 5px;
 }
 
-#content-table {
+#content-main {
   padding: 15px 0 0;
 }
 
-#content-table table {
+#content-main table {
   border-collapse: collapse;
   width: 100%;
+}
+
+#content-footer {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 10px;
 }
 
 .table-header {
@@ -149,13 +156,6 @@ footer {
   background: #f6f6f6;
   border: grey;
   width: 100%;
-}
-
-#content-footer {
-  align-items: center;
-  display: flex;
-  justify-content: flex-end;
-  padding: 15px 10px;
 }
 
 .create button,
