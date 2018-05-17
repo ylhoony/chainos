@@ -11,14 +11,19 @@ const initIndex = () => {
     .done((res) => {
       data.paymentOptions = res;
       $("#content-main").html(template(data));
+
+      $("a").on("click", (e) => {
+        e.preventDefault();
+        window.location.href = `/payment_options/${$(e.target).data("id")}`
+      });
     })
     .fail((err) => {
       console.error(err);
-    })
+    });
 
   $(".create button").on("click", () => {
     window.location.href = "/payment_options/new"
-  })
+  });
 }
 
 const initForm = () => {
@@ -40,7 +45,6 @@ const initForm = () => {
 
         $("form#payment_option").on("submit", (e) => {
           e.preventDefault();
-          // console.log("test");
 
           const $form = $(e.target);
           const action = $form.attr("action");
@@ -58,8 +62,7 @@ const initForm = () => {
             .fail((err) => {
               console.error(err);
             });
-        })
-
+        });
       })
       .fail((err) => {
         console.log(err);
@@ -85,10 +88,30 @@ const initForm = () => {
         console.error(err);
       });
   });
+}
 
+const initShow = () => {
+  const source = document.getElementById("payment-option-show-template").innerHTML;
+  const template = Handlebars.compile(source);
+  const pathname = window.location.pathname;
+
+  $.ajax({
+    method: "get",
+    url: pathname,
+    dataType: "json"
+  })
+    .done((res) => {
+      $("#content-main").html(template(res));
+
+      $("a").on("click", (e) => {
+        e.preventDefault();
+        window.location.href =  $(e.target).attr("href");
+      });
+    });
 }
 
 const init = () => {
+  console.log("init")
   const pathname = window.location.pathname;
   if ((pathname === "/payment_options") || (pathname === "/payment_options/")) {
     initIndex();
