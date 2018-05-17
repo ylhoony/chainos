@@ -20,10 +20,6 @@ const initIndex = () => {
     .fail((err) => {
       console.error(err);
     });
-
-  $(".create button").on("click", () => {
-    window.location.href = "/payment_options/new"
-  });
 }
 
 const initForm = () => {
@@ -111,7 +107,6 @@ const initShow = () => {
 }
 
 const init = () => {
-  console.log("init")
   const pathname = window.location.pathname;
   if ((pathname === "/payment_options") || (pathname === "/payment_options/")) {
     initIndex();
@@ -120,6 +115,10 @@ const init = () => {
   } else {
     initShow();
   }
+
+  $(".create button").on("click", () => {
+    window.location.href = "/payment_options/new"
+  });
 
   $("a").on("click", (e) => {
     e.preventDefault();
