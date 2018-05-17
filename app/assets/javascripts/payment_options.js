@@ -1,3 +1,16 @@
+const initIndex = () => {
+  const source = document.getElementById("payment-option-index-template").innerHTML;
+  const template = Handlebars.compile(source);
+
+  $("#content-main").html(template());
+
+
+
+  $(".create button").on("click", () => {
+    window.location.href = "/payment_options/new"
+  })
+}
+
 const initForm = () => {
   const source = document.getElementById("payment-option-form-template").innerHTML;
   const template = Handlebars.compile(source);
@@ -16,8 +29,6 @@ const initForm = () => {
       data: params
     })
       .done((res) => {
-        console.log(res);
-        // debugger;
         window.location.href = `/payment_options/${res.id}`;
       })
       .fail((err) => {
@@ -27,8 +38,14 @@ const initForm = () => {
 }
 
 const init = () => {
-  // console.log("test")
-  initForm();
+  const pathname = window.location.pathname;
+  if (pathname === "/payment_options") {
+    initIndex();
+  } else if (pathname === "/payment_options/new") {
+    initForm();
+  } else {
+
+  }
 }
 
 $(() => {
