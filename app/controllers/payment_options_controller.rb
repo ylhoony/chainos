@@ -5,11 +5,20 @@ class PaymentOptionsController < ApplicationController
   end
 
   def new
-    
+    @payment_option = PaymentOption.new
   end
 
   def create
-    
+    # binding.pry
+    @payment_option = PaymentOption.new(payment_option_params)
+    if @payment_option.save
+      respond_to do |format|
+        # format.html { redirect_to payment_option_path(@payment_option) }
+        format.json { render json: @payment_option, status: 201 }
+      end
+    else
+
+    end
   end
 
   def edit
@@ -23,7 +32,7 @@ class PaymentOptionsController < ApplicationController
   private
 
   def payment_option_params
-    
+    params.require(:payment_option).permit(:name, :status)
   end
 
 end
