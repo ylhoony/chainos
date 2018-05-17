@@ -1,5 +1,5 @@
 class PaymentOptionsController < ApplicationController
-  before_action :set_payment_option, only: [:show, :edit]
+  before_action :set_payment_option, only: [:show, :edit, :update]
   def index
     @payment_options = PaymentOption.all
     respond_to do |format|
@@ -40,7 +40,10 @@ class PaymentOptionsController < ApplicationController
   end
 
   def update
-    
+    @payment_option.update(payment_option_params)
+    respond_to do |format|
+      format.json { render json: @payment_option, status: 201 }
+    end
   end
 
   private
