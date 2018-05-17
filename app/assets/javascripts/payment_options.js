@@ -1,3 +1,14 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+const initForm = () => {
+  const source = document.getElementById("payment-option-form-template").innerHTML;
+  const template = Handlebars.compile(source);
+  $("#content-main").html(template());
+}
+
+const init = () => {
+  // console.log("test")
+  initForm();
+}
+
+$(() => {
+  init();
+});
