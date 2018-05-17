@@ -1,5 +1,5 @@
 <section id="breadcrumb">
-  Home > Payment Options
+  Home > <a href="/payment_options">Payment Options</a>
 </section>
 
 <section id="content">
@@ -16,9 +16,18 @@
 
 <script id="payment-option-index-template" type="text/x-handlebars-template">
   <table>
-    <tr>
+    <tr class="table-header">
+      <th>id</th>
       <th>Name</th>
+      <th></th>
     </tr>
+    {{#each paymentOptions}}
+    <tr class="table-content">
+      <td class="td-center">{{id}}</td>
+      <td class="td-center">{{name}}</td>
+      <td class="td-center update"><a href="/payment_options/{{id}}"><button><i class="fas fa-exchange fa-sm"></i></button></a></td>
+    </tr>
+    {{/each}}
   </table>
 </script>
 
