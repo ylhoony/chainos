@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180516031253) do
+ActiveRecord::Schema.define(version: 20180517223700) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "name"
@@ -50,6 +50,18 @@ ActiveRecord::Schema.define(version: 20180516031253) do
   create_table "payment_options", force: :cascade do |t|
     t.string "name"
     t.boolean "status", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payment_terms", force: :cascade do |t|
+    t.integer "account_id"
+    t.integer "payment_option_id"
+    t.string "name"
+    t.float "trade_credit_rate"
+    t.integer "trade_credit_days"
+    t.integer "days"
+    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
