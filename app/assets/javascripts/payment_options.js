@@ -1,10 +1,20 @@
 const initIndex = () => {
+  let data = new Object;
   const source = document.getElementById("payment-option-index-template").innerHTML;
   const template = Handlebars.compile(source);
 
-  $("#content-main").html(template());
-
-
+  $.ajax({
+    method: "get",
+    url: "/payment_options",
+    dataType: "json"
+  })
+    .done((res) => {
+      data.paymentOptions = res;
+      $("#content-main").html(template(data));
+    })
+    .fail((err) => {
+      console.error(err);
+    })
 
   $(".create button").on("click", () => {
     window.location.href = "/payment_options/new"
@@ -39,13 +49,18 @@ const initForm = () => {
 
 const init = () => {
   const pathname = window.location.pathname;
-  if (pathname === "/payment_options") {
+  if ((pathname === "/payment_options") || (pathname === "/payment_options/")) {
     initIndex();
-  } else if (pathname === "/payment_options/new") {
+  } else if ((pathname === "/payment_options/new") || (pathname === "/payment_options/new/")) {
     initForm();
   } else {
 
   }
+
+  $("a").on("click", (e) => {
+    e.preventDefault();
+    window.location.href =  $(e.target).attr("href");
+  });
 }
 
 $(() => {
