@@ -1,7 +1,11 @@
 class PaymentOptionsController < ApplicationController
 
   def index
-
+    @payment_options = PaymentOption.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @payment_options, status: 201 }
+    end
   end
 
   def new
