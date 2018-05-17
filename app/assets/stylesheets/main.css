@@ -23,6 +23,10 @@ body {
   position: fixed;
   width: 100%;
 }
+
+a:link {
+  text-decoration: none;
+}
 /* Global End */
 
 /* Header Start */
