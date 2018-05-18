@@ -48,11 +48,34 @@ const initForm = () => {
 
   const pathname = window.location.pathname;
   if ((pathname === "/payment_terms/new") || (pathname === "/payment_terms/new/")) {
-    $("#content-main").html(template());
+    $.ajax({
+      method: "get",
+      url: "/payment_options",
+      dataType: "json"
+    })
+      .done((res) => {
+        let data = new Object;
+        data.paymentOptions = res;
+        $("#content-main").html(template(data));
+      })
+      .fail((err) => {
+        console.log(err);
+      });
+
+    
+
+
+    
   } else {
 
   }
 
+}
+
+const HandlebarsFormSetup = () => {
+  Handlebars.registerHelper("displayOption", (item) => {
+    return new Handlebars.SafeString(`<option value="${item.id}">${item.name}</option>`)
+  })
 }
 
 const init = () => {
@@ -61,6 +84,7 @@ const init = () => {
     initIndex();
   } else if (pathname.slice(-4).includes("new") || pathname.slice(-5).includes("edit")) {
     initForm();
+    HandlebarsFormSetup();
   } else {
     initShow();
   }
