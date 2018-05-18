@@ -1,1 +1,36 @@
 <%= render partial: "section" %>
+
+<script id="payment-terms-index-template" type="text/x-handlebars-template">
+  <table>
+    <tr class="table-header">
+      <th>Name</th>
+      <th>Payment Option</th>
+      <th>Trade Credit Rate</th>
+      <th>Trade Credit Days</th>
+      <th>Days</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    {{#each paymentTerms}}
+      <tr class="table-content">
+        <td>{{name}}</td>
+        <td>{{payment_option.name}}</td>
+        <td class="td-center">{{trade_credit_rate}}</td>
+        <td class="td-center">{{trade_credit_days}}</td>
+        <td class="td-center">{{days}}</td>
+        <td class="td-center">
+        {{#if status}}
+          <input type="checkbox" checked disabled>
+        {{else}}
+          <input type="checkbox" disabled>
+        {{/if}}
+        </td>
+        <td><a href="/payment_terms/{{id}}">View</a></td>
+        <td><a href="/payment_terms/{{id}}/edit">Edit</a></td>
+        <td><a href="/payment_terms/{{id}}">Delete</a></td>
+      </tr>
+    {{/each}}
+  </table>
+</script>
