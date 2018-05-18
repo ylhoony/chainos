@@ -1,3 +1,5 @@
+"use strict";
+
 const initIndex = () => {
   let data = new Object;
   const source = document.getElementById("payment-option-index-template").innerHTML;

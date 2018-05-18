@@ -1,3 +1,5 @@
+"use strict";
+
 const initIndex = () => {
   const source = document.getElementById("payment-terms-index-template").innerHTML;
   const template = Handlebars.compile(source);
