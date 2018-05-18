@@ -42,9 +42,18 @@ const initShow = () => {
 
 }
 
-const initForm = () => [
+const initForm = () => {
+  const source = document.getElementById("payment-terms-form-template").innerHTML;
+  const template = Handlebars.compile(source);
 
-]
+  const pathname = window.location.pathname;
+  if ((pathname === "/payment_terms/new") || (pathname === "/payment_terms/new/")) {
+    $("#content-main").html(template());
+  } else {
+
+  }
+
+}
 
 const init = () => {
   const pathname = window.location.pathname;
