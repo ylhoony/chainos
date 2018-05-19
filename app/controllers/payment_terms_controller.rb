@@ -9,11 +9,14 @@ class PaymentTermsController < ApplicationController
   end
 
   def new
-    @payment_term = PaymentTem.new
   end
 
   def create
-    
+    @payment_term = PaymentTerm.new(payment_term_params)
+    @payment_term.save
+    respond_to do |format|
+      format.json { render json: @payment_term, status: 201 }
+    end
   end
 
   def show
@@ -43,7 +46,7 @@ class PaymentTermsController < ApplicationController
   end
 
   def payment_term_params
-    
+    params.require(:payment_term).permit(:account_id, :name, :days, :payment_option_id, :trade_credit_rate, :trade_credit_days, :status)
   end
 
 end
