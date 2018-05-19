@@ -57,14 +57,32 @@ const initForm = () => {
         let data = new Object;
         data.paymentOptions = res;
         $("#content-main").html(template(data));
+
+        $("form#new_payment_term").on("submit", (e) => {
+          e.preventDefault();
+
+          const $form = $(e.target);
+          const action = $form.attr("action")
+          const params = $form.serialize();
+
+          $.ajax({
+            method: "post",
+            url: action,
+            dataType: "json",
+            data: params
+          })
+            .done((res) => {
+              window.location.href = `/payment_terms/${res.id}`;
+            })
+            .fail((err) => {
+              console.log(err);
+            });
+
+        });
       })
       .fail((err) => {
         console.log(err);
       });
-
-    
-
-
     
   } else {
 
