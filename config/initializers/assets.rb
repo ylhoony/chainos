@@ -30,6 +30,8 @@ Rails.application.config.assets.precompile += %w(
   payment_options.css
   employees.js
   employees.css
+  freight_terms.js
+  freight_terms.css
   payment_terms.js
   payment_terms.css
 )
