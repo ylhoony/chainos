@@ -43,10 +43,10 @@ const initShow = () => {
 }
 
 const initForm = () => {
-  const source = document.getElementById("payment-terms-form-template").innerHTML;
-  const template = Handlebars.compile(source);
-
   const pathname = window.location.pathname;
+  const source = document.getElementById("payment-term-form-template").innerHTML;
+  const template = Handlebars.compile(source);  
+  
   if ((pathname === "/payment_terms/new") || (pathname === "/payment_terms/new/")) {
     $.ajax({
       method: "get",
@@ -83,11 +83,21 @@ const initForm = () => {
       .fail((err) => {
         console.log(err);
       });
-    
   } else {
-
+    $.ajax({
+      method: "get",
+      url: pathname,
+      dataType: "json"
+    })
+      .done((res) => {
+        $("#content-main").html(template(res));
+        
+      })
+      .fail((err) => {
+        console.log("err", err);
+      })
+    
   }
-
 }
 
 const HandlebarsFormSetup = () => {
