@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :freight_terms
   resources :payment_terms
   resources :payment_options
   resources :employees
