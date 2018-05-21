@@ -1,4 +1,5 @@
 class PaymentTermsController < ApplicationController
+  before_action :set_payment_term, only: [:show, :edit, :update, :delete]
 
   def index
     @payment_terms = current_account.payment_terms.all
@@ -20,7 +21,6 @@ class PaymentTermsController < ApplicationController
   end
 
   def show
-    @payment_term = current_account.payment_terms.find(params[:id])
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @payment_term, status: 201 }
@@ -28,7 +28,10 @@ class PaymentTermsController < ApplicationController
   end
 
   def edit
-    
+    respond_to do |format|
+      format.html { render :edit }
+      format.json { render json: @payment_term, status: 201 }
+    end
   end
 
   def update
