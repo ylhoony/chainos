@@ -1,0 +1,16 @@
+<%= render partial: "section"%>
+
+<script id="freight-term-form-template" type="text/x-handlebars-template">
+  <form class="new_freight_term" id="new_freight_term" action="/freight_terms" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <label for="freight_term_name" wfd-id="2">Name</label>
+    <input type="text" name="freight_term[name]" id="freight_term_name">
+
+    <input value="true" type="hidden" name="freight_term[status]" id="freight_term_status">
+
+    <input type="submit" name="commit" value="Create Freight term" data-disable-with="Create Freight term">
+  </form>
+</script>
