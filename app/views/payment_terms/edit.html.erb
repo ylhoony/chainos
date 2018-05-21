@@ -1,1 +1,58 @@
 <%= render partial: "section" %>
+
+<script id="payment-term-form-template" type="text/x-handlebars-template">
+  <form class="new_payment_term" id="new_payment_term" action="/payment_terms" accept-charset="UTF-8" method="post">
+  
+    <input name="utf8" type="hidden" value="✓">
+    
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <input value="{{id}}" type="hidden" name="payment_term[account_id]" id="payment_term_account_id">
+
+    <div class="field">
+      <label for="payment_term_name">Payment Term Name: </label>
+      <input type="text" name="payment_term[name]" id="payment_term_name" value="{{name}}">
+    </div>
+
+    <div class="field">
+      <label for="payment_term_days">Date or Net Days: </label>
+      <input min="0" type="number" name="payment_term[days]" id="payment_term_days" value="{{days}}"><br>
+    </div>
+
+    <div class="field">
+      <label for="payment_term_payment_option_id">Payment Option: </label>
+      <select name="payment_term[payment_option_id]" id="payment_term_payment_option_id">
+        <option value="">Please select</option>
+        <option value="{{payment_option.id}}" selected>{{payment_option.name}}</option>
+        {{#each paymentOptions}}
+        {{displayOption this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="payment_term_trade_credit_rate">Trade Credit Rate: </label>
+      <input type="text" name="payment_term[trade_credit_rate]" id="payment_term_trade_credit_rate" value="{{trade_credit_rate}}"><br>
+    </div>
+
+    <div class="field">
+      <label for="payment_term_trade_credit_days">Trade Credit Days: </label>
+      <input type="number" name="payment_term[trade_credit_days]" id="payment_term_trade_credit_days" value="{{trade_credit_days}}"><br>
+    </div>
+
+    <div class="field">
+      <label for="payment_term_status">Status</label>
+      {{#if status}}
+        <input name="payment_term[status]" type="checkbox" value="1" checked>
+        <input name="payment_term[status]" type="hidden" value="0">
+      {{else}}
+        <input name="payment_term[status]" type="checkbox" value="0">
+      {{/if}}
+    </div>
+
+    <div class="actions">
+      <input type="submit" name="commit" value="Edit Payment Term" data-disable-with="Create Payment term">
+    </div>
+
+  </form>
+</script>
