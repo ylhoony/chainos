@@ -1,0 +1,15 @@
+<%= render partial: "section" %>
+
+<script id="freight-term-show-template" type="text/x-handlebars-template">
+  <p>ID: {{freightTerms.id}}</p>
+  <p>Name: {{freightTerms.name}}</p>
+  <p>Status: 
+    {{#if freightTerms.status}}
+    <input type="checkbox" checked disabled>
+    {{else}}
+    <input type="checkbox" disabled>
+    {{/if}}
+  </p>
+  <button class="edit" data-action="/payment-terms/{{id}}/edit">Edit</button>
+  <button class="delete" data-action="/payment-terms/{{id}}">Delete</button>
+</script>
