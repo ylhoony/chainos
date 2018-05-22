@@ -31,25 +31,6 @@ const initIndex = () => {
     .done((res) => {
       data.accounts = res;
       $("#content-main").html(template(data));
-
-      $(".account-change").on("click", (e) => {
-        e.preventDefault();
-        const action = $(e.target).attr("href");
-        $.ajax({
-          method: "get",
-          url: action,
-          dataType: "json"
-        })
-          .done(() => {
-            window.location.href = "/dashboard"
-          })
-          .fail((err) => {
-            console.error(err);
-          });
-      });
-    })
-    .fail((err) => {
-      console.log(err);
     })
 }
 
