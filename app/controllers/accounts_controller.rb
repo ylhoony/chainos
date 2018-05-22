@@ -10,23 +10,17 @@ class AccountsController < ApplicationController
   end
 
   def new
-    @account = Account.new
   end
 
   def create
-    @account = Account.new(account_params)
-    if @account.save
+    @account = current_user.accounts.build(account_params)
+    if  @account.save
       @account.employees.create(user_id: current_user.id, account_id: @account.id)
       current_user.current_account = @account
-      respond_to do |format|
-        # format.html { render :index }
-        format.json { render json: @account, status: 201 }
-      end
-    else
-      respond_to do |format|
-        format.html { render :new }
-        # format.json { render json: @accounts, status: 201 }
-      end
+    end
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @account, status: 201 }
     end
   end
 
