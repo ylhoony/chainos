@@ -1,90 +1,116 @@
-const pathname = window.location.pathname;
+"use strict";
 
-const windowLocationHref = (path) => {
-  return window.location.href = path;
+$(document).on('turbolinks:load', () => {
+  init();
+});
+
+class FreightTerm {
+  constructor(name, status) {
+    this.name = name;
+    this.status = status;
+  }
 }
 
-const feedContentMain = (template, data) => {
-  $("#content-main").html(template(data));
-  anchorClickEvent();
-}
-
-const anchorClickEvent = () => {
-  $("a").on("click", (e) => {
-    e.preventDefault();
-    window.location.href =  $(e.target).attr("href");
-  });
-}
-
-const postData = (action, params, controller, postAction) => {
-  $.ajax({
-    method: 'post',
-    url: action,
-    dataType: "json",
-    data: params
-  }).done((res) => {
-    windowLocationHref(`${controller}/${res.id}`);
-  }).fail((err) => {
-    console.log("err");
-  })
-}
-
-const getData = (action, template) => {
-  $.ajax({
-    method: "get",
-    url: action,
-    dataType: "json"
-  }).done((res) => {
-    let data = new Object;
-    data.freightTerms = res;
-    feedContentMain(template, data); 
-  })
-}
-
-const initForm = () => {
-  const source = document.getElementById("freight-term-form-template").innerHTML;
-  const template = Handlebars.compile(source);
-  $("#content-main").html(template());
-
-  $("form#new_freight_term").on("submit", (e) => {
-    e.preventDefault();
-    const $form = $(e.target);
-    const action = $form.attr("action");
-    const params = $form.serialize();
-
-    postData(action, params, "/freight_terms", windowLocationHref);
-  })
+const init = () => {
+  const pathname = window.location.pathname;
+  if (pathname.endsWith("/freight_terms") || pathname.endsWith("/freight_terms/")) {
+    $("div.edit").remove();
+    $("div.delete").remove();
+    initIndex();
+  } else if (pathname.slice(-4).includes("new") || pathname.slice(-5).includes("edit")) {
+    $("div.create").remove();
+    $("div.edit").remove();
+    $("div.delete").remove();
+    initForm();
+  } else {
+    $("div.create").remove();
+    initShow();
+  }
 }
 
 const initIndex = () => {
   const source = document.getElementById("freight-terms-index-template").innerHTML;
   const template = Handlebars.compile(source);
-  getData(pathname, template, feedContentMain);
+  ajaxData("get", "/freight_terms", {})
+    .done((res) => {
+      let data = new Object;
+      data.freightTerms = res;
+      $("#content-main").html(template(data));
+    })
+    .fail((err) => {
+      console.log(err);
+    })
+}
+
+const initForm = () => {
+  const pathname = window.location.pathname;
+  const source = document.getElementById("freight-term-form-template").innerHTML;
+  const template = Handlebars.compile(source);
+
+  if ((pathname === "/freight_terms/new") || (pathname === "/freight_terms/new/")) {
+    $("#content-main").html(template());
+  } else {
+    ajaxData("get", pathname, {})
+      .done((res) => {
+        $("#content-main").html(template(res));
+        $("form#freight_term").on("submit", updateFreightTerm);
+      })
+      .fail((err) => {
+        console.log(err);
+      });
+  }
+
+  $("form#new_freight_term").on("submit", createFreightTerm);
+}
+
+const createFreightTerm = (e) => {
+  e.preventDefault();
+  const $form = $(e.target);
+  const action = $form.attr("action");
+  const params = $form.serialize();
+
+  ajaxData("post", action, params)
+    .done((res) => {
+      window.location.href = `/freight_terms/${res.id}`
+    })
+    .fail((err) => {
+      console.log(err);
+    })
+}
+
+const updateFreightTerm = (e) => {
+  e.preventDefault();
+  const $form = $(e.target);
+  const action = $form.attr("action");
+  const params = $form.serialize();
+
+  ajaxData("put", action, params)
+    .done((res) => {
+      window.location.href = `/freight_terms/${res.id}`
+    })
+    .fail((err) => {
+      console.log(err);
+    })
 }
 
 const initShow = () => {
   const source = document.getElementById("freight-term-show-template").innerHTML;
   const template = Handlebars.compile(source);
   
-  getData(pathname, template);
+  ajaxData("get", window.location.pathname, {})
+    .done((res) => {
+      $("#content-main").html(template(res));
+    })
+    .fail((err) => {
+      console.log(err);
+    });
 }
 
-const init = () => {
-  if ((pathname === "/freight_terms") || (pathname === "/freight_terms/")) {
-    initIndex();
-  } else if (pathname.slice(-4).includes("new") || pathname.slice(-5).includes("edit")) {
-    initForm();
-  } else {
-    initShow();
-  }
-
-  $(".create button").on("click", () => {
-    window.location.href = "/freight_terms/new"
+const ajaxData = (method, dataURL, params) => {
+  return $.ajax({
+    method: method,
+    url: dataURL,
+    data: params,
+    dataType: "json"
   });
-
-  anchorClick();
 }
-
-$(() => {
-  init();
-})
