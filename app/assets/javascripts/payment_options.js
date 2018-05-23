@@ -1,5 +1,27 @@
 "use strict";
 
+$(document).on('turbolinks:load', () => {
+  init();
+});
+
+const init = () => {
+  const pathname = window.location.pathname;
+  if ((pathname === "/payment_options") || (pathname === "/payment_options/")) {
+    $("div.edit").remove();
+    $("div.delete").remove();
+    initIndex();
+  } else if (pathname.slice(-4).includes("new") || pathname.slice(-5).includes("edit")) {
+    $("div.create").remove();
+    $("div.edit").remove();
+    $("div.delete").remove();
+    initForm();
+  } else {
+    $("div.edit").remove();
+    $("div.delete").remove();
+    initShow();
+  }
+}
+
 const initIndex = () => {
   let data = new Object;
   const source = document.getElementById("payment-option-index-template").innerHTML;
@@ -14,10 +36,6 @@ const initIndex = () => {
       data.paymentOptions = res;
       $("#content-main").html(template(data));
 
-      $("a").on("click", (e) => {
-        e.preventDefault();
-        window.location.href = `/payment_options/${$(e.target).data("id")}`
-      });
     })
     .fail((err) => {
       console.error(err);
@@ -107,27 +125,3 @@ const initShow = () => {
       });
     });
 }
-
-const init = () => {
-  const pathname = window.location.pathname;
-  if ((pathname === "/payment_options") || (pathname === "/payment_options/")) {
-    initIndex();
-  } else if (pathname.slice(-4).includes("new") || pathname.slice(-5).includes("edit")) {
-    initForm();
-  } else {
-    initShow();
-  }
-
-  $(".create button").on("click", () => {
-    window.location.href = "/payment_options/new"
-  });
-
-  $("a").on("click", (e) => {
-    e.preventDefault();
-    window.location.href =  $(e.target).attr("href");
-  });
-}
-
-$(() => {
-  init();
-});
