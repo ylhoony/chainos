@@ -80,6 +80,10 @@ a:link {
   padding: 15px 0;
 }
 
+#breadcrumb p {
+  margin: 0;
+}
+
 #content {
   background-color: rgba(255, 222, 173, 0.25);
   padding: 10px;
