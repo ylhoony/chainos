@@ -23,19 +23,14 @@ const init = () => {
 }
 
 const initIndex = () => {
-  let data = new Object;
   const source = document.getElementById("payment-option-index-template").innerHTML;
   const template = Handlebars.compile(source);
 
-  $.ajax({
-    method: "get",
-    url: "/payment_options",
-    dataType: "json"
-  })
+  ajaxData("get", "/payment_options", {})
     .done((res) => {
+      let data = new Object;
       data.paymentOptions = res;
       $("#content-main").html(template(data));
-
     })
     .fail((err) => {
       console.error(err);
@@ -124,4 +119,13 @@ const initShow = () => {
         window.location.href =  $(e.target).attr("href");
       });
     });
+}
+
+const ajaxData = (method, dataURL, params) => {
+  return $.ajax({
+    method: method,
+    url: dataURL,
+    data: params,
+    dataType: "json"
+  });
 }
