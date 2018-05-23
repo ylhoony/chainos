@@ -1,6 +1,6 @@
 class FreightTermsController < ApplicationController
-  before_action :set_freight_term, only: [:show, :edit, :update, :delete]
-  
+  before_action :set_freight_term, only: [:show, :edit, :update, :destroy]
+
   def index
     @freight_terms = current_account.freight_terms.all
     respond_to do |format|
@@ -10,6 +10,10 @@ class FreightTermsController < ApplicationController
   end
 
   def new
+    respond_to do |format|
+      format.html { render :new }
+      # format.json { render json: @freight_term, status: 201 }
+    end
   end
 
   def create
@@ -28,7 +32,10 @@ class FreightTermsController < ApplicationController
   end
 
   def edit
-    
+    respond_to do |format|
+      format.html { render :edit }
+      format.json { render json: @freight_term, status: 201 }
+    end
   end
 
   def update
@@ -36,7 +43,11 @@ class FreightTermsController < ApplicationController
   end
 
   def destroy
-    
+    @freight_term.delete
+    respond_to do |format|
+      format.html { redirect_to :index }
+      format.json { render json: @freight_term, status: 201 }
+    end
   end
 
   private
