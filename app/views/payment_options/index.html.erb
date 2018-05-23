@@ -3,15 +3,25 @@
 <script id="payment-option-index-template" type="text/x-handlebars-template">
   <table>
     <tr class="table-header">
-      <th>id</th>
+      <th>ID</th>
       <th>Name</th>
+      <th>Status</th>
+      <th></th>
       <th></th>
     </tr>
     {{#each paymentOptions}}
     <tr class="table-content">
-      <td class="td-center"><a data-id="{{id}}">{{id}}</a></td>
+      <td class="td-center">{{id}}</td>
       <td class="td-center">{{name}}</td>
-      <td class="td-center update"><a data-id="{{id}}"><button data-id="{{id}}"><i class="fas fa-exchange fa-sm" data-id="{{id}}"></i></button></a></td>
+      <td class="td-center">
+        {{#if status}}
+          <input type="checkbox" checked disabled>
+        {{else}}
+          <input type="checkbox" disabled>
+        {{/if}}
+        </td>
+      <td class="td-center update"><a href="/payment_options/{{id}}">View</a></td>
+      <td class="td-center update"><a href="/payment_options/{{id}}/edit">Edit</a></td>
     </tr>
     {{/each}}
   </table>
