@@ -100,8 +100,10 @@ a:link {
   margin: 0;
 }
 
-#content-header button {
-  border-radius: 5px;
+#content-header article {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 #content-main {
@@ -166,28 +168,36 @@ a:link {
   width: 100%;
 }
 
-.create button,
-.edit button,
-.delete button {
-  align-items: center;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-}
-
 .btn-sqr-lg {
+  border-radius: 5px;
   height: 2.5em;
   width: 2.5em;
 }
 
 .btn-sqr-md {
+  border-radius: 5px;
   height: 2.5em;
   width: 2.5em;
 }
 
 .btn-sqr-sm {
+  border-radius: 5px;
   height: 2.5em;
   width: 2.5em;
+}
+
+.create,
+.edit,
+.delete {
+  padding-left: 10px;
+}
+
+.create button,
+.edit button,
+.delete button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .create button:hover {
