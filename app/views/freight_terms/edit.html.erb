@@ -1,0 +1,25 @@
+<%= render partial: "section"%>
+
+<script id="freight-term-form-template" type="text/x-handlebars-template">
+  <form class="freight_term" id="freight_term" action="/freight_terms/{{id}}" accept-charset="UTF-8" method="put">
+    <input name="utf8" type="hidden" value="✓">
+
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <label for="freight_term_name">Name</label>
+    <input type="text" name="freight_term[name]" id="freight_term_name" value="{{name}}">
+    <br>
+
+    <label for="freight_term_status">Status</label>
+    {{#if status}}
+      <input value="false" type="hidden" name="freight_term[status]" id="freight_term_status">
+      <input value="true" type="checkbox" name="freight_term[status]" id="freight_term_status" checked>      
+    {{else}}
+      <input value="false" type="checkbox" name="freight_term[status]" id="freight_term_status">
+      <input value="true" type="hidden" name="freight_term[status]" id="freight_term_status">
+    {{/if}}
+    <br>
+
+    <input type="submit" name="commit" value="Edit Freight term" data-disable-with="Edit Freight term">
+  </form>
+</script>
