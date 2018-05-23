@@ -12,7 +12,6 @@ class FreightTermsController < ApplicationController
   def new
     respond_to do |format|
       format.html { render :new }
-      # format.json { render json: @freight_term, status: 201 }
     end
   end
 
@@ -39,7 +38,11 @@ class FreightTermsController < ApplicationController
   end
 
   def update
-    
+    @freight_term.update(freight_term_params)
+    respond_to do |format|
+      format.html { redirect_to freight_term_path(@freight_term) }
+      format.json { render json: @freight_term, status: 201 }
+    end
   end
 
   def destroy
