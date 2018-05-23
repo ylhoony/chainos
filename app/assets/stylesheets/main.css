@@ -167,7 +167,7 @@ a:link {
 }
 
 .create button,
-.update button,
+.edit button,
 .delete button {
   align-items: center;
   border-radius: 5px;
@@ -175,14 +175,19 @@ a:link {
   justify-content: center;
 }
 
-.create button {
+.btn-sqr-lg {
   height: 2.5em;
   width: 2.5em;
 }
-.update button,
-.delete button {
-  height: 1.5em;
-  width: 1.5em;
+
+.btn-sqr-md {
+  height: 2.5em;
+  width: 2.5em;
+}
+
+.btn-sqr-sm {
+  height: 2.5em;
+  width: 2.5em;
 }
 
 .create button:hover {
@@ -190,7 +195,7 @@ a:link {
   color: white;
   cursor: pointer;
 }
-.update button:hover {
+.edit button:hover {
   background-color: cornflowerblue;
   color: white;
   cursor: pointer;
