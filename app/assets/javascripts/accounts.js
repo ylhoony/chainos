@@ -8,6 +8,9 @@ const init = () => {
   const pathname = window.location.pathname;
   
   if (pathname.endsWith("/accounts") || pathname.endsWith("/accounts/")) {
+    const createBtn = '<div class="create"><button><i class="far fa-plus fa-lg"></i></button></div>';
+    $("#content-header").append(createBtn);
+    $("#content-footer").append(createBtn);
     handlebarsIndexSetup();
     initIndex();
   } else if (pathname.slice(-4).includes("new") || pathname.slice(-5).includes("edit")) {
