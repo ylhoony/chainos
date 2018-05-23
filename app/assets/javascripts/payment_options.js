@@ -16,7 +16,7 @@ const init = () => {
     $("div.delete").remove();
     initForm();
   } else {
-    $("div.edit").remove();
+    $("div.create").remove();
     $("div.delete").remove();
     initShow();
   }
@@ -38,86 +38,51 @@ const initIndex = () => {
 }
 
 const initForm = () => {
+  const pathname = window.location.pathname;
   const source = document.getElementById("payment-option-form-template").innerHTML;
   const template = Handlebars.compile(source);
-
-  const pathname = window.location.pathname;
+  
   if ((pathname === "/payment_options/new") || (pathname === "/payment_options/new/")) {
     $("#content-main").html(template());
   } else {
     let data = new Object;
-    $.ajax({
-      method: "get",
-      url: pathname,
-      dataType: "json"
-    })
+
+    ajaxData("get", pathname, {})
       .done((res) => {
         $("#content-main").html(template(res));
-
-        $("form#payment_option").on("submit", (e) => {
-          e.preventDefault();
-
-          const $form = $(e.target);
-          const action = $form.attr("action");
-          const params = $form.serialize();
-
-          $.ajax({
-            method: "put",
-            url: action,
-            dataType: 'json',
-            data: params
-          })
-            .done((res) => {
-              window.location.href = `/payment_options/${res.id}`;
-            })
-            .fail((err) => {
-              console.error(err);
-            });
-        });
+        $("form#payment_option").on("submit", submitPaymentOptionForm);
       })
       .fail((err) => {
         console.log(err);
       });
   }
+  $("form#new_payment_option").on("submit", submitPaymentOptionForm);
+}
 
-  $("form#new_payment_option").on("submit", (e) => {
-    e.preventDefault();
-    const $form = $(e.target);
-    const action = $form.attr("action");
-    const params = $form.serialize();
+const submitPaymentOptionForm = (e) => {
+  e.preventDefault();
+  const $form = $(e.target);
+  const method = $form.attr("method");
+  const action = $form.attr("action");
+  const params = $form.serialize();
 
-    $.ajax({
-      method: "post",
-      url: action,
-      dataType: 'json',
-      data: params
+  ajaxData(method, action, params)
+    .done((res) => {
+      window.location.href = `/payment_options/${res.id}`;
     })
-      .done((res) => {
-        window.location.href = `/payment_options/${res.id}`;
-      })
-      .fail((err) => {
-        console.error(err);
-      });
-  });
+    .fail((err) => {
+      console.error(err);
+    });
 }
 
 const initShow = () => {
+  const pathname = window.location.pathname;
   const source = document.getElementById("payment-option-show-template").innerHTML;
   const template = Handlebars.compile(source);
-  const pathname = window.location.pathname;
 
-  $.ajax({
-    method: "get",
-    url: pathname,
-    dataType: "json"
-  })
+  ajaxData("get", pathname, {})
     .done((res) => {
       $("#content-main").html(template(res));
-
-      $("a").on("click", (e) => {
-        e.preventDefault();
-        window.location.href =  $(e.target).attr("href");
-      });
     });
 }
 
