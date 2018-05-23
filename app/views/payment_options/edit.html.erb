@@ -4,9 +4,20 @@
   <form class="payment_option" id="payment_option" action="/payment_options/{{id}}" accept-charset="UTF-8" method="put">
     <input name="utf8" type="hidden" value="✓">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <label for="payment_option_name">Name</label>
+    <label for="payment_option_name">Name:</label>
     <input type="text" name="payment_option[name]" id="payment_option_name" value="{{name}}">
-    <input type="hidden" name="payment_option[status]" value="1" id="payment_option_status">
+    <br>
+
+    <label for="payment_option_status">Status:</label>
+    {{#if status}}
+      <input value="false" type="hidden" name="payment_option[status]" id="payment_option_status">
+      <input value="true" type="checkbox" name="payment_option[status]" id="payment_option_status" checked>      
+    {{else}}
+      <input value="false" type="checkbox" name="payment_option[status]" id="payment_option_status">
+      <input value="true" type="hidden" name="payment_option[status]" id="payment_option_status">
+    {{/if}}
+    <br>
+
     <br>
     <input type="submit" name="commit" value="Update Payment Option" data-disable-with="Update Payment Option">
   </form>
