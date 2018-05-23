@@ -9,20 +9,13 @@ class PaymentOptionsController < ApplicationController
   end
 
   def new
-    @payment_option = PaymentOption.new
   end
 
   def create
     @payment_option = PaymentOption.new(payment_option_params)
-    if @payment_option.save
-      respond_to do |format|
-        format.json { render json: @payment_option, status: 201 }
-      end
-    else
-      respond_to do |format|
-        # format.html { redirect_to payment_option_path(@payment_option) }
-        # format.json { render json: @payment_option, status: 201 }
-      end
+    @payment_option.save
+    respond_to do |format|
+      format.json { render json: @payment_option, status: 201 }
     end
   end
   def show
