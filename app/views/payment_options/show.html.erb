@@ -3,5 +3,11 @@
 <script id="payment-option-show-template" type="text/x-handlebars-template">
   <p>ID: {{id}}</p>
   <p>Name: {{name}}</p>
-  <p><a href="/payment_options/{{id}}/edit">Edit</a></p>
+  <p>Status: 
+    {{#if status}} 
+    <input type="checkbox" checked disabled>
+    {{else}}
+    <input type="checkbox" disabled>
+    {{/if}}
+  </p>
 </script>
