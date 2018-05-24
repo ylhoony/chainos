@@ -77,6 +77,7 @@ const initForm = () => {
           if (e.id == optionId) { e.selected = true; }
         });
         $("#content-main").html(template(data));
+        $("form#payment_term").on("submit", submitPaymentTermForm);
       })
       .fail((err) => {
         console.log("err", err);
