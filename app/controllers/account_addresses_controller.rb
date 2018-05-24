@@ -1,4 +1,5 @@
 class AccountAddressesController < ApplicationController
+  before_action :set_account_address, only: [:show, :edit, :udpate, :destroy]
 
   def index
     @account_addresses = current_account.account_addresses.all
@@ -23,7 +24,11 @@ class AccountAddressesController < ApplicationController
   end
 
   def show
-    
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render json: @account_address, status: 201 }
+    end 
   end
 
   def edit
@@ -61,5 +66,4 @@ class AccountAddressesController < ApplicationController
       :status
     )
   end
-
 end
