@@ -1,7 +1,11 @@
 class AccountAddressesController < ApplicationController
 
   def index
-    
+    @account_addresses = current_account.account_addresses.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @account_addresses, status: 201 }
+    end
   end
 
   def new
