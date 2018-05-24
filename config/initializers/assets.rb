@@ -36,4 +36,6 @@ Rails.application.config.assets.precompile += %w(
   payment_terms.css
   unit_of_measures.js
   unit_of_measures.css
+  account_addresses.js
+  account_addresses.css
 )
