@@ -1,0 +1,16 @@
+<%= render partial: "section"%>
+
+<script id="uom-form-template" type="text/x-handlebars-template">
+  <form class="new_unit_of_measure" id="new_unit_of_measure" action="/unit_of_measures" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <label for="unit_of_measure_name">Name</label>
+    <input type="text" name="unit_of_measure[name]" id="unit_of_measure_name">
+
+    <input value="true" type="hidden" name="unit_of_measure[status]" id="unit_of_measure_status">
+
+    <input type="submit" name="commit" value="Create UOM" data-disable-with="Create UOM">
+  </form>
+</script>

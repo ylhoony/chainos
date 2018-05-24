@@ -1,0 +1,13 @@
+<%= render partial: "section" %>
+
+<script id="uom-show-template" type="text/x-handlebars-template">
+  <p>ID: {{id}}</p>
+  <p>Name: {{name}}</p>
+  <p>Status: 
+    {{#if status}}
+    <input type="checkbox" checked disabled>
+    {{else}}
+    <input type="checkbox" disabled>
+    {{/if}}
+  </p>
+</script>
