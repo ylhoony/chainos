@@ -1,0 +1,28 @@
+<%= render partial: "section" %>
+
+<script id="account-addresses-index-template" type="text/x-handlebars-template">
+  <table>
+    <tr class="table-header">
+      <th>Name</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    {{#each accountAddresses}}
+      <tr class="table-content">
+        <td class="td-center">{{name}}</td>
+        <td class="td-center">
+        {{#if status}}
+          <input type="checkbox" checked disabled>
+        {{else}}
+          <input type="checkbox" disabled>
+        {{/if}}
+        </td>
+        <td class="td-center"><a href="/freight_terms/{{id}}">View</a></td>
+        <td class="td-center"><a href="/freight_terms/{{id}}/edit">Edit</a></td>
+        <td class="td-center"><a href="/freight_terms/{{id}}">Delete</a></td>
+      </tr>
+    {{/each}}
+  </table>
+</script>
