@@ -53,38 +53,24 @@ const initForm = () => {
     ajaxData("get", pathname, {})
       .done((res) => {
         $("#content-main").html(template(res));
-        $("form#freight_term").on("submit", updateFreightTerm);
+        $("form#freight_term").on("submit", submitFreightTermForm);
       })
       .fail((err) => {
         console.log(err);
       });
   }
 
-  $("form#new_freight_term").on("submit", createFreightTerm);
+  $("form#new_freight_term").on("submit", submitFreightTermForm);
 }
 
-const createFreightTerm = (e) => {
+const submitFreightTermForm = (e) => {
   e.preventDefault();
   const $form = $(e.target);
+  const method = $form.attr("method");
   const action = $form.attr("action");
   const params = $form.serialize();
 
-  ajaxData("post", action, params)
-    .done((res) => {
-      window.location.href = `/freight_terms/${res.id}`
-    })
-    .fail((err) => {
-      console.log(err);
-    })
-}
-
-const updateFreightTerm = (e) => {
-  e.preventDefault();
-  const $form = $(e.target);
-  const action = $form.attr("action");
-  const params = $form.serialize();
-
-  ajaxData("put", action, params)
+  ajaxData(method, action, params)
     .done((res) => {
       window.location.href = `/freight_terms/${res.id}`
     })
