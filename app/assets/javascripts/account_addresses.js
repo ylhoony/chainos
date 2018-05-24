@@ -21,6 +21,7 @@ const init = () => {
     $("div.create").remove();
     $("div.edit").remove();
     $("div.delete").remove();
+    handlebarsFormSetup();
     initForm();
   } else {
     $("div.create").remove();
@@ -33,7 +34,6 @@ const initIndex = () => {
   const template = Handlebars.compile(source);
   ajaxData("get", "/account_addresses", {})
     .done((res) => {
-      console.log(res);
       let data = new Object;
       data.accountAddresses = res;
       $("#content-main").html(template(data));
@@ -43,24 +43,43 @@ const initIndex = () => {
     });
 }
 
+const handlebarsFormSetup = () => {
+  Handlebars.registerHelper("displayOption", (item) => {
+    if (item.selected) {
+      return new Handlebars.SafeString(`<option value="${item.id}" selected>${item.name}</option>`)
+    } else {
+      return new Handlebars.SafeString(`<option value="${item.id}">${item.name}</option>`)
+    }
+  })
+}
+
 const initForm = () => {
   const pathname = window.location.pathname;
-  const source = document.getElementById("uom-form-template").innerHTML;
+  const source = document.getElementById("account-address-form-template").innerHTML;
   const template = Handlebars.compile(source);
 
-  if ((pathname === "/unit_of_measures/new") || (pathname === "/unit_of_measures/new/")) {
-    $("#content-main").html(template());
+  if ((pathname === "/account_addresses/new") || (pathname === "/account_addresses/new/")) {
+    ajaxData("get", "/countries/active", {})
+      .done((res) => {
+        let data = new Object;
+        console.log(res);
+        data.countries = res;
+        $("#content-main").html(template(data));
+      })
+      .fail((err) => {
+        console.log(err);
+      });    
   } else {
     ajaxData("get", pathname, {})
       .done((res) => {
         $("#content-main").html(template(res));
-        $("form#unit_of_measure").on("submit", submitFreightTermForm);
+        $("form#account_address").on("submit", submitFreightTermForm);
       })
       .fail((err) => {
         console.log(err);
       });
   }
-  $("form#new_unit_of_measure").on("submit", submitFreightTermForm);
+  $("form#new_account_address").on("submit", submitFreightTermForm);
 }
 
 const submitFreightTermForm = (e) => {
@@ -72,7 +91,7 @@ const submitFreightTermForm = (e) => {
 
   ajaxData(method, action, params)
     .done((res) => {
-      window.location.href = `/unit_of_measures/${res.id}`;
+      window.location.href = `/account_addresss/${res.id}`;
     })
     .fail((err) => {
       console.log(err);
