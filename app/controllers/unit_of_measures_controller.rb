@@ -1,5 +1,5 @@
 class UnitOfMeasuresController < ApplicationController
-  before_action :set_unit_of_measure, only: [:show, :edit, :update, :destory]
+  before_action :set_unit_of_measure, only: [:show, :edit, :update, :destroy]
 
   def index
     @unit_of_measures = current_account.unit_of_measures.all
@@ -28,15 +28,26 @@ class UnitOfMeasuresController < ApplicationController
   end
 
   def edit
-    
+    respond_to do |format|
+      format.html { render :edit }
+      format.json { render json: @unit_of_measure, status: 201 }
+    end
   end
 
   def update
-    
+    @unit_of_measure.update(unit_of_measure_params)
+    respond_to do |format|
+      format.html { redirect_to unit_of_measure_path(@unit_of_measure) }
+      format.json { render json: @unit_of_measure, status: 201 }
+    end
   end
 
   def destroy
-    
+    @unit_of_measure.delete
+    respond_to do |format|
+      format.html { redirect_to :index }
+      format.json { render json: @unit_of_measure, status: 201 }
+    end
   end
 
   private
