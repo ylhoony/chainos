@@ -1,4 +1,15 @@
-nav#dashboard
+<section id="breadcrumb">
+  <p>Home > <a href="/dashboard">Dashboard</a></p>
+</section>
 
-current_user id: <%= current_user.id %>
-current_account id: <%= current_user.current_account_id %>
+<section id="content">
+  <header id="content-header">
+    <h2>Dashboard</h2>
+  </header>
+  <main id="content-main">
+    <p>current_user id: <%= current_user.id %></P>
+    <p>current_account id: <%= current_user.current_account_id %></p>
+  </main>
+  <footer id="content-footer">
+  </footer>
+</section>
