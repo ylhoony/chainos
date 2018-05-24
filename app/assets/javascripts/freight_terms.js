@@ -4,12 +4,12 @@ $(document).on('turbolinks:load', () => {
   init();
 });
 
-class FreightTerm {
-  constructor(name, status) {
-    this.name = name;
-    this.status = status;
-  }
-}
+// class FreightTerm {
+//   constructor(name, status) {
+//     this.name = name;
+//     this.status = status;
+//   }
+// }
 
 const init = () => {
   const pathname = window.location.pathname;
@@ -39,7 +39,7 @@ const initIndex = () => {
     })
     .fail((err) => {
       console.log(err);
-    })
+    });
 }
 
 const initForm = () => {
@@ -72,11 +72,11 @@ const submitFreightTermForm = (e) => {
 
   ajaxData(method, action, params)
     .done((res) => {
-      window.location.href = `/freight_terms/${res.id}`
+      window.location.href = `/freight_terms/${res.id}`;
     })
     .fail((err) => {
       console.log(err);
-    })
+    });
 }
 
 const initShow = () => {
