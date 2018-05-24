@@ -64,7 +64,13 @@
     <div class="field">
       <label for="account_address_fax">Fax: </label>
       <input type="text" name="account_address[fax]" id="account_address_fax">
-    </div>  
+    </div>
+
+    <div class="field">
+      <label for="account_address_comment">Comment: </label>
+      <textarea name="account_address[comment]" id="account_address_comment">
+      </textarea>
+    </div>
 
     <input value="true" type="hidden" name="account_address[status]" id="account_address_status"><br>
 
@@ -72,6 +78,4 @@
       <input type="submit" name="commit" value="Create Account address" data-disable-with="Create Account address">
     </div>
   </form>
-
 </script>
-
