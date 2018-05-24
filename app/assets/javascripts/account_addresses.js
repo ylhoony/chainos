@@ -33,6 +33,7 @@ const initIndex = () => {
   const template = Handlebars.compile(source);
   ajaxData("get", "/account_addresses", {})
     .done((res) => {
+      console.log(res);
       let data = new Object;
       data.accountAddresses = res;
       $("#content-main").html(template(data));
