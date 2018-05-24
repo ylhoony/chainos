@@ -1,1 +1,21 @@
 <%= render partial: "section" %>
+
+<script id="account-address-show-template" type="text/x-handlebars-template">
+  <p>Name: {{name}}</p>
+  <p>Contact: {{contact}}</p>
+  <p>Address: <br>
+    {{address1}}, {{address2}}<br>
+    {{city}}, {{state}}<br>
+    {{country.name}} {{postal_code}}</p>
+  <p>Email: {{email}}</p>
+  <p>Phone: {{phone}}</p>
+  <p>Fax: {{fax}}</p>
+  <p>Comment: {{comment}}</p>
+  <p>Status: 
+    {{#if status}}
+    <input type="checkbox" checked disabled>
+    {{else}}
+    <input type="checkbox" disabled>
+    {{/if}}
+  </p>
+</script>
