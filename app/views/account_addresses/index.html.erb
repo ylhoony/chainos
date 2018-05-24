@@ -3,7 +3,12 @@
 <script id="account-addresses-index-template" type="text/x-handlebars-template">
   <table>
     <tr class="table-header">
-      <th>Name</th>
+      <th>Company Name</th>
+      <th>Contact</th>
+      <th>Address</th>
+      <th>Province/State</th>
+      <th>Country</th>
+      <th>Email</th>
       <th>Status</th>
       <th></th>
       <th></th>
@@ -12,6 +17,11 @@
     {{#each accountAddresses}}
       <tr class="table-content">
         <td class="td-center">{{name}}</td>
+        <td class="td-center">{{contact}}</td>
+        <td class="td-center">{{address1}}<br>{{address2}}</td>
+        <td class="td-center">{{state}}</td>
+        <td class="td-center">{{country.name}}</td>
+        <td class="td-center">{{email}}</td>
         <td class="td-center">
         {{#if status}}
           <input type="checkbox" checked disabled>
@@ -19,9 +29,9 @@
           <input type="checkbox" disabled>
         {{/if}}
         </td>
-        <td class="td-center"><a href="/freight_terms/{{id}}">View</a></td>
-        <td class="td-center"><a href="/freight_terms/{{id}}/edit">Edit</a></td>
-        <td class="td-center"><a href="/freight_terms/{{id}}">Delete</a></td>
+        <td class="td-center"><a href="/account_addresses/{{id}}">View</a></td>
+        <td class="td-center"><a href="/account_addresses/{{id}}/edit">Edit</a></td>
+        <td class="td-center"><a href="/account_addresses/{{id}}">Delete</a></td>
       </tr>
     {{/each}}
   </table>
