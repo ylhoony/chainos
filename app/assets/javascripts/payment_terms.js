@@ -14,7 +14,7 @@ const init = () => {
     $("div.create").remove();
     $("div.edit").remove();
     $("div.delete").remove();
-    HandlebarsFormSetup();
+    handlebarsFormSetup();
     initForm();    
   } else {
     $("div.create").remove();
@@ -37,7 +37,7 @@ const initIndex = () => {
     });
 }
 
-const HandlebarsFormSetup = () => {
+const handlebarsFormSetup = () => {
   Handlebars.registerHelper("displayOption", (item) => {
     if (item.selected) {
       return new Handlebars.SafeString(`<option value="${item.id}" selected>${item.name}</option>`)
