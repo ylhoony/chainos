@@ -1,2 +1,2 @@
-class Supplier < ApplicationRecord
+class Supplier < Company
 end
