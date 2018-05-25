@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180525180543) do
+ActiveRecord::Schema.define(version: 20180525204940) do
 
   create_table "account_addresses", force: :cascade do |t|
     t.integer "account_id"
@@ -52,6 +52,20 @@ ActiveRecord::Schema.define(version: 20180525180543) do
     t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.integer "account_id"
+    t.string "type"
+    t.string "name"
+    t.text "comment"
+    t.integer "warehouse_id"
+    t.integer "payment_term_id"
+    t.integer "currency_id"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type", "account_id"], name: "index_companies_on_type_and_account_id"
   end
 
   create_table "countries", force: :cascade do |t|
