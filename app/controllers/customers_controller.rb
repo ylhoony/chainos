@@ -1,7 +1,12 @@
 class CustomersController < ApplicationController
 
   def index
-    
+    @customers = current_account.customers.all
+    respond_to do |format|
+      format.html { render :index }
+      format.js
+      format.json { render json: @customers, status: 201 }
+    end
   end
 
   def new
