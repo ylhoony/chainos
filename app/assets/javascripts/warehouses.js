@@ -65,10 +65,10 @@ const initForm = () => {
         console.log(err);
       });
   } else {
-    const getAccountAddress = ajaxData("get", pathname, {}),
+    const getWarehouse = ajaxData("get", pathname, {}),
           getCountries = ajaxData("get", "/countries/active", {})
     
-    $.when(getWarehouses, getCountries)
+    $.when(getWarehouse, getCountries)
       .done((warehouseData, countriesList) => {
         let data = new Object;
         data.warehouse = warehouseData[0];
