@@ -1,7 +1,10 @@
 "use strict";
 
 $(document).on('turbolinks:load', () => {
-  init();
+  const pathname = window.location.pathname;
+  if (pathname.includes("accounts")) {
+    init();
+  }
 });
 
 const init = () => {
