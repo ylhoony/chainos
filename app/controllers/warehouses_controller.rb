@@ -1,7 +1,12 @@
 class WarehousesController < ApplicationController
 
   def index
-    
+    @warehouses = current_account.warehouses.all
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render json: @warehouses, status: 201 }
+    end
   end
 
   def new
