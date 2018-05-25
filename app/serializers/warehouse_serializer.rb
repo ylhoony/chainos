@@ -1,3 +1,4 @@
 class WarehouseSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  belongs_to :country
+  # attributes :id, :name, :contact, 
 end
