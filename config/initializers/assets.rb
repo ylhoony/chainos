@@ -40,4 +40,6 @@ Rails.application.config.assets.precompile += %w(
   account_addresses.css
   account_contacts.js
   account_contacts.css
+  warehouses.js
+  warehouses.css
 )
