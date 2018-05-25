@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(version: 20180525180543) do
   create_table "warehouses", force: :cascade do |t|
     t.integer "account_id"
     t.string "name"
+    t.string "contact"
     t.string "address1"
     t.string "address2"
     t.string "city"

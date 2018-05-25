@@ -3,7 +3,7 @@ class CreateWarehouses < ActiveRecord::Migration[5.1]
     create_table :warehouses do |t|
       t.integer :account_id
       t.string :name
-      t.string :name
+      t.string :contact
       t.string :address1
       t.string :address2
       t.string :city
