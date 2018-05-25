@@ -1,5 +1,5 @@
 class AccountAddressesController < ApplicationController
-  before_action :set_account_address, only: [:show, :edit, :udpate, :destroy]
+  before_action :set_account_address, only: [:show, :edit, :update, :destroy]
 
   def index
     @account_addresses = current_account.account_addresses.all
@@ -42,14 +42,19 @@ class AccountAddressesController < ApplicationController
   def update
     @account_address.update(account_address_params)
     respond_to do |format|
-      format.html redirect_to account_address_path(@account_address)
+      format.html { redirect_to account_address_path(@account_address) }
       format.js
       format.json { render json: @account_address, status: 201 }
     end
   end
 
   def destroy
-    
+    @account_address.delete
+    respond_to do |format|
+      format.html { redirect_to :index }
+      format.js
+      format.json { render json: @account_address, status: 201 }
+    end
   end
 
   private

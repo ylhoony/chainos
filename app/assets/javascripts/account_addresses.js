@@ -93,7 +93,7 @@ const submitAccountAddressForm = (e) => {
 
   ajaxData(method, action, params)
     .done((res) => {
-      window.location.href = `/account_addresss/${res.id}`;
+      window.location.href = `/account_addresses/${res.id}`;
     })
     .fail((err) => {
       console.log(err);
