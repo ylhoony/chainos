@@ -57,6 +57,13 @@ class WarehousesController < ApplicationController
     end
   end
 
+  def active
+    @warehouses = Warehouse.active_warehouses(current_account)
+    respond_to do |format|
+      format.json { render json: @warehouses, status: 201 }
+    end
+  end
+
   private
 
   def set_warehouse
