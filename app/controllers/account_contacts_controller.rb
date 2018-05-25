@@ -1,8 +1,12 @@
 class AccountContactsController < ApplicationController
 
   def index
-    @account_contacts = current_acocunt.account_contacts.all
-    
+    @account_contacts = current_account.account_contacts.all
+    respond_to do |format|
+      format.html { render :index }
+      format.js
+      format.json { render json: @account_contacts, status: 201 }
+    end
   end
 
   def new
