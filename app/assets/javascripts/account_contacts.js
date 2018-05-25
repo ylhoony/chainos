@@ -51,43 +51,25 @@ const handlebarsFormSetup = () => {
 
 const initForm = () => {
   const pathname = window.location.pathname;
-  const source = document.getElementById("account-address-form-template").innerHTML;
+  const source = document.getElementById("account-contact-form-template").innerHTML;
   const template = Handlebars.compile(source);
 
   if ((pathname === "/account_contacts/new") || (pathname === "/account_contacts/new/")) {
-    ajaxData("get", "/countries/active", {})
-      .done((res) => {
-        let data = new Object;
-        data.countries = res;
-        $("#content-main").html(template(data));
-      })
-      .fail((err) => {
-        console.log(err);
-      });
+    $("#content-main").html(template());
   } else {
-    const getAccountAddress = ajaxData("get", pathname, {}),
-          getCountries = ajaxData("get", "/countries/active", {})
-    
-    $.when(getAccountAddress, getCountries)
-      .done((accountAddressData, countriesList) => {
-        let data = new Object;
-        data.accountAddress = accountAddressData[0];
-        data.countries = countriesList[0];
-        const optionId = data.accountAddress.country.id
-        data.countries.map((e) => {
-          if (e.id == optionId) { e.selected = true; }
-        });
-        $("#content-main").html(template(data));
-        $("form#account_address").on("submit", submitAccountAddressForm);
+    ajaxData("get", pathname, {})
+      .done((res) => {
+        $("#content-main").html(template(res));
+        $("form#account_contact").on("submit", submitAccountContactForm);
       })
       .fail((err) => {
         console.log(err);
       });
   }
-  $("form#new_account_address").on("submit", submitAccountAddressForm);
+  $("form#new_account_contact").on("submit", submitAccountContactForm);
 }
 
-const submitAccountAddressForm = (e) => {
+const submitAccountContactForm = (e) => {
   e.preventDefault();
   const $form = $(e.target);
   const method = $form.attr("method");
@@ -104,7 +86,7 @@ const submitAccountAddressForm = (e) => {
 }
 
 const initShow = () => {
-  const source = document.getElementById("account-address-show-template").innerHTML;
+  const source = document.getElementById("account-contact-show-template").innerHTML;
   const template = Handlebars.compile(source);
   
   ajaxData("get", window.location.pathname, {})
