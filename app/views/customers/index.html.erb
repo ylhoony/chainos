@@ -1,0 +1,30 @@
+<%= render partial: "section" %>
+
+<script id="customers-index-template" type="text/x-handlebars-template">
+  <table>
+    <tr class="table-header">
+      <th>Customer Name</th>
+      <th>Payment Term</th>
+      <th>Currency</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+    </tr>
+    {{#each customers}}
+      <tr class="table-content">
+        <td class="td-center">{{name}}</td>
+        <td class="td-center">{{payment_term.name}}</td>
+        <td class="td-center">{{currency.name}}</td>
+        <td class="td-center">
+        {{#if status}}
+          <input type="checkbox" checked disabled>
+        {{else}}
+          <input type="checkbox" disabled>
+        {{/if}}
+        </td>
+        <td class="td-center"><a href="/customers/{{id}}">View</a></td>
+        <td class="td-center"><a href="/customers/{{id}}/edit">Edit</a></td>
+      </tr>
+    {{/each}}
+  </table>
+</script>
