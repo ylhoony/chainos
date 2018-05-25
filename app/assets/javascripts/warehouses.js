@@ -31,7 +31,7 @@ const initIndex = () => {
   ajaxData("get", "/warehouses", {})
     .done((res) => {
       let data = new Object;
-      data.accountAddresses = res;
+      data.warehouses = res;
       $("#content-main").html(template(data));
     })
     .fail((err) => {
