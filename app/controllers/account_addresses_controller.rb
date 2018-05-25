@@ -25,18 +25,27 @@ class AccountAddressesController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html
+      format.html { render :show }
       format.js
       format.json { render json: @account_address, status: 201 }
-    end 
+    end
   end
 
   def edit
-    
+    respond_to do |format|
+      format.html { render :edit }
+      format.js
+      format.json { render json: @account_address, status: 201 }
+    end
   end
 
   def update
-    
+    @account_address.update(account_address_params)
+    respond_to do |format|
+      format.html redirect_to account_address_path(@account_address)
+      format.js
+      format.json { render json: @account_address, status: 201 }
+    end
   end
 
   def destroy
