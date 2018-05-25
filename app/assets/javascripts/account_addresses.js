@@ -4,13 +4,6 @@ $(document).on('turbolinks:load', () => {
   init();
 });
 
-// class UnitOfMeasure {
-//   constructor(name, status) {
-//     this.name = name;
-//     this.status = status;
-//   }
-// }
-
 const init = () => {
   const pathname = window.location.pathname;
   if (pathname.endsWith("/account_addresses") || pathname.endsWith("/account_addresses/")) {
@@ -62,27 +55,36 @@ const initForm = () => {
     ajaxData("get", "/countries/active", {})
       .done((res) => {
         let data = new Object;
-        console.log(res);
         data.countries = res;
         $("#content-main").html(template(data));
       })
       .fail((err) => {
         console.log(err);
-      });    
+      });
   } else {
-    ajaxData("get", pathname, {})
-      .done((res) => {
-        $("#content-main").html(template(res));
-        $("form#account_address").on("submit", submitFreightTermForm);
+    const getAccountAddress = ajaxData("get", pathname, {}),
+          getCountries = ajaxData("get", "/countries/active", {})
+    
+    $.when(getAccountAddress, getCountries)
+      .done((accountAddressData, countriesList) => {
+        let data = new Object;
+        data.accountAddress = accountAddressData[0];
+        data.countries = countriesList[0];
+        const optionId = data.accountAddress.country.id
+        data.countries.map((e) => {
+          if (e.id == optionId) { e.selected = true; }
+        });
+        $("#content-main").html(template(data));
+        $("form#account_address").on("submit", submitAccountAddressForm);
       })
       .fail((err) => {
         console.log(err);
       });
   }
-  $("form#new_account_address").on("submit", submitFreightTermForm);
+  $("form#new_account_address").on("submit", submitAccountAddressForm);
 }
 
-const submitFreightTermForm = (e) => {
+const submitAccountAddressForm = (e) => {
   e.preventDefault();
   const $form = $(e.target);
   const method = $form.attr("method");
@@ -99,7 +101,7 @@ const submitFreightTermForm = (e) => {
 }
 
 const initShow = () => {
-  const source = document.getElementById("uom-show-template").innerHTML;
+  const source = document.getElementById("account-address-show-template").innerHTML;
   const template = Handlebars.compile(source);
   
   ajaxData("get", window.location.pathname, {})
