@@ -1,1 +1,89 @@
 <%= render partial: "section" %>
+
+<script id="account-address-form-template" type="text/x-handlebars-template">
+  <form class="new_account_address" id="new_account_address" action="/account_addresses" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <div class="field">
+      <label for="account_address_name">Business Name: </label>
+      <input type="text" name="account_address[name]" id="account_address_name" value="{{accountAddress.name}}">
+    </div>
+
+    <div class="field">
+      <label for="account_address_contact">Contact: </label>
+      <input type="text" name="account_address[contact]" id="account_address_contact" value="{{accountAddress.contact}}">
+    </div>
+
+    <div class="field">
+      <label for="account_address_address1">Address Line 1: </label>
+      <input type="text" name="account_address[address1]" id="account_address_address1" value="{{accountAddress.address1}}">
+    </div>
+
+    <div class="field">
+      <label for="account_address_address2">Address Line 2: </label>
+      <input type="text" name="account_address[address2]" id="account_address_address2" value="{{accountAddress.address2}}">
+    </div>
+
+    <div class="field">
+      <label for="account_address_city">City: </label>
+      <input type="text" name="account_address[city]" id="account_address_city" value="{{accountAddress.city}}">
+    </div>
+
+    <div class="field">
+      <label for="account_address_state">State/Province: </label>
+      <input type="text" name="account_address[state]" id="account_address_state" value="{{accountAddress.state}}">
+    </div>
+
+    <div class="field">
+      <label for="account_address_country_id">Country: </label>
+      <select name="account_address[country_id]" id="account_address_country_id">
+        <option value="">Please select</option>
+        {{#each countries}}
+        {{displayOption this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="account_address_postal_code">Postal Code: </label>
+      <input type="text" name="account_address[postal_code]" id="account_address_postal_code" value="{{accountAddress.postal_code}}">
+    </div>
+
+    <div class="field">
+      <label for="account_address_email">Email: </label>
+      <input type="text" name="account_address[email]" id="account_address_email" value="{{accountAddress.email}}">
+    </div>
+
+    <div class="field">
+      <label for="account_address_phone">Phone: </label>
+      <input type="text" name="account_address[phone]" id="account_address_phone" value="{{accountAddress.phone}}">
+    </div>
+
+    <div class="field">
+      <label for="account_address_fax">Fax: </label>
+      <input type="text" name="account_address[fax]" id="account_address_fax" value="{{accountAddress.fax}}">
+    </div>
+
+    <div class="field">
+      <label for="account_address_comment">Comment: </label>
+      <textarea name="account_address[comment]" id="account_address_comment">{{accountAddress.comment}}</textarea>
+    </div>
+
+    <div class="field">
+      <label for="account_address_status">Status</label>
+      {{#if accountAddress.status}}
+        <input value="false" type="hidden" name="account_address[status]" id="account_address_status">
+        <input value="true" type="checkbox" name="account_address[status]" id="account_address_status" checked>      
+      {{else}}
+        <input value="false" type="checkbox" name="account_address[status]" id="account_address_status">
+        <input value="true" type="hidden" name="account_address[status]" id="account_address_status">
+      {{/if}}
+      <br>
+    </div>
+
+    <div class="actions">
+      <input type="submit" name="commit" value="Edit Account Address" data-disable-with="Edit Account Address">
+    </div>
+  </form>
+</script>
