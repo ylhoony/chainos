@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   resources :account_addresses
   resources :unit_of_measures
   resources :freight_terms
+
+  get "/payment_terms/active", to: "payment_terms#active"
   resources :payment_terms
+  
   resources :payment_options
   resources :employees
   resources :accounts
