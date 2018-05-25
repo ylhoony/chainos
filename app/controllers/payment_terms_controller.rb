@@ -49,6 +49,13 @@ class PaymentTermsController < ApplicationController
     end
   end
 
+  def active
+    @payment_terms = PaymentTerm.active_payment_terms(current_account)
+    respond_to do |format|
+      format.json { render json: @payment_terms, status: 201 }
+    end
+  end
+
   private
 
   def set_payment_term
