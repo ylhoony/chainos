@@ -3,6 +3,7 @@ class Account < ApplicationRecord
   belongs_to :currency
   has_many :account_addresses
   has_many :account_contacts
+  has_many :companies
   has_many :employees
   has_many :users, through: :employees
   has_many :freight_terms
