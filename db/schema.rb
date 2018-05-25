@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180525002927) do
+ActiveRecord::Schema.define(version: 20180525180543) do
 
   create_table "account_addresses", force: :cascade do |t|
     t.integer "account_id"
@@ -134,6 +134,23 @@ ActiveRecord::Schema.define(version: 20180525002927) do
     t.integer "current_account_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "warehouses", force: :cascade do |t|
+    t.integer "account_id"
+    t.string "name"
+    t.string "address1"
+    t.string "address2"
+    t.string "city"
+    t.string "state"
+    t.integer "country_id"
+    t.string "postal_code"
+    t.string "email"
+    t.string "phone"
+    t.string "fax"
+    t.boolean "status", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
