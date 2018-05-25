@@ -38,4 +38,6 @@ Rails.application.config.assets.precompile += %w(
   unit_of_measures.css
   account_addresses.js
   account_addresses.css
+  account_contacts.js
+  account_contacts.css
 )
