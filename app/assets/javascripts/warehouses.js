@@ -68,26 +68,26 @@ const initForm = () => {
     const getAccountAddress = ajaxData("get", pathname, {}),
           getCountries = ajaxData("get", "/countries/active", {})
     
-    $.when(getAccountAddress, getCountries)
-      .done((accountAddressData, countriesList) => {
+    $.when(getWarehouses, getCountries)
+      .done((warehouseData, countriesList) => {
         let data = new Object;
-        data.accountAddress = accountAddressData[0];
+        data.warehouse = warehouseData[0];
         data.countries = countriesList[0];
-        const optionId = data.accountAddress.country.id
+        const optionId = data.warehouse.country.id
         data.countries.map((e) => {
           if (e.id == optionId) { e.selected = true; }
         });
         $("#content-main").html(template(data));
-        $("form#warehouse").on("submit", submitAccountAddressForm);
+        $("form#warehouse").on("submit", submitWarehouseForm);
       })
       .fail((err) => {
         console.log(err);
       });
   }
-  $("form#new_warehouse").on("submit", submitAccountAddressForm);
+  $("form#new_warehouse").on("submit", submitWarehouseForm);
 }
 
-const submitAccountAddressForm = (e) => {
+const submitWarehouseForm = (e) => {
   e.preventDefault();
   const $form = $(e.target);
   const method = $form.attr("method");
@@ -104,7 +104,7 @@ const submitAccountAddressForm = (e) => {
 }
 
 const initShow = () => {
-  const source = document.getElementById("account-address-show-template").innerHTML;
+  const source = document.getElementById("warehouse-show-template").innerHTML;
   const template = Handlebars.compile(source);
   
   ajaxData("get", window.location.pathname, {})
