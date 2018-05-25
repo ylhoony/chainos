@@ -1,0 +1,17 @@
+<%= render partial: "section" %>
+
+<script id="account-contact-show-template" type="text/x-handlebars-template">
+  <p>Name: {{first_name}} {{last_name}}</p>
+  <p>Job Title: {{job_title}}</p>
+  <p>Email: {{email}}</p>
+  <p>Phone: {{phone}}</p>
+  <p>Fax: {{fax}}</p>
+  <p>Comment: {{comment}}</p>
+  <p>Status: 
+    {{#if status}}
+    <input type="checkbox" checked disabled>
+    {{else}}
+    <input type="checkbox" disabled>
+    {{/if}}
+  </p>
+</script>

@@ -1,0 +1,62 @@
+<%= render partial: "section" %>
+
+<script id="account-contact-form-template" type="text/x-handlebars-template">
+
+  <form class="account_contact" id="account_contact" action="/account_contacts/{{id}}" accept-charset="UTF-8" method="put">
+    <input name="utf8" type="hidden" value="✓">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <div class="field">
+      <label for="account_contact_first_name">First Name: </label>
+      <input type="text" name="account_contact[first_name]" id="account_contact_first_name" value="{{first_name}}">
+    </div>
+
+    <div class="field">
+      <label for="account_contact_last_name">Last Name: </label>
+      <input type="text" name="account_contact[last_name]" id="account_contact_last_name" value="{{last_name}}">
+    </div>
+
+    <div class="field">
+      <label for="account_contact_job_title">Job Title: </label>
+      <input type="text" name="account_contact[job_title]" id="account_contact_job_title" value="{{job_title}}">
+    </div>
+
+    <div class="field">
+      <label for="account_contact_email">Email: </label>
+      <input type="text" name="account_contact[email]" id="account_contact_email" value="{{email}}">
+    </div>
+
+    <div class="field">
+      <label for="account_contact_phone">Phone: </label>
+      <input type="text" name="account_contact[phone]" id="account_contact_phone" value="{{phone}}">
+    </div>
+
+    <div class="field">
+      <label for="account_contact_fax">Fax: </label>
+      <input type="text" name="account_contact[fax]" id="account_contact_fax" value="{{fax}}">
+    </div>
+
+    <div class="field">
+      <label for="account_contact_comment">Comment: </label>
+      <textarea name="account_contact[comment]" id="account_contact_comment">{{comment}}</textarea>
+    </div>
+
+    <input value="true" type="hidden" name="account_contact[status]" id="account_contact_status"><br>
+
+    <div class="field">
+      <label for="account_contact_status">Status</label>
+      {{#if status}}
+        <input value="false" type="hidden" name="account_contact[status]" id="account_contact_status">
+        <input value="true" type="checkbox" name="account_contact[status]" id="account_contact_status" checked>      
+      {{else}}
+        <input value="false" type="checkbox" name="account_contact[status]" id="account_contact_status">
+        <input value="true" type="hidden" name="account_contact[status]" id="account_contact_status">
+      {{/if}}
+      <br>
+    </div>
+
+    <div class="actions">
+      <input type="submit" name="commit" value="Edit Account Contact" data-disable-with="Edit Account Contact">
+    </div>
+  </form>
+</script>

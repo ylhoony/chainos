@@ -1,0 +1,51 @@
+<%= render partial: "section" %>
+
+<script id="account-contact-form-template" type="text/x-handlebars-template">
+
+  <form class="new_account_contact" id="new_account_contact" action="/account_contacts" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <div class="field">
+      <label for="account_contact_first_name">First Name: </label>
+      <input type="text" name="account_contact[first_name]" id="account_contact_first_name">
+    </div>
+
+    <div class="field">
+      <label for="account_contact_last_name">Last Name: </label>
+      <input type="text" name="account_contact[last_name]" id="account_contact_last_name">
+    </div>
+
+    <div class="field">
+      <label for="account_contact_job_title">Job Title: </label>
+      <input type="text" name="account_contact[job_title]" id="account_contact_job_title">
+    </div>
+
+    <div class="field">
+      <label for="account_contact_email">Email: </label>
+      <input type="text" name="account_contact[email]" id="account_contact_email">
+    </div>
+
+    <div class="field">
+      <label for="account_contact_phone">Phone: </label>
+      <input type="text" name="account_contact[phone]" id="account_contact_phone">
+    </div>
+
+    <div class="field">
+      <label for="account_contact_fax">Fax: </label>
+      <input type="text" name="account_contact[fax]" id="account_contact_fax">
+    </div>
+
+    <div class="field">
+      <label for="account_contact_comment">Comment: </label>
+      <textarea name="account_contact[comment]" id="account_contact_comment">
+      </textarea>
+    </div>
+
+    <input value="true" type="hidden" name="account_contact[status]" id="account_contact_status"><br>
+
+    <div class="actions">
+      <input type="submit" name="commit" value="Create Account Contact" data-disable-with="Create Account Contact">
+    </div>
+  </form>
+</script>
