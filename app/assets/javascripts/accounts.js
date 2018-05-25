@@ -6,16 +6,20 @@ $(document).on('turbolinks:load', () => {
 
 const init = () => {
   const pathname = window.location.pathname;
-  
   if (pathname.endsWith("/accounts") || pathname.endsWith("/accounts/")) {
-    const createBtn = '<div class="create"><button class="btn-sqr-lg"><i class="far fa-plus fa-lg"></i></button></div>';
-    $("#content-header").append(createBtn);
+    $("div.edit").remove();
+    $("div.delete").remove();
     handlebarsIndexSetup();
     initIndex();
   } else if (pathname.slice(-4).includes("new") || pathname.slice(-5).includes("edit")) {
+    $("div.create").remove();
+    $("div.edit").remove();
+    $("div.delete").remove();
     handlebarsFormSetup();
     initForm();
   } else {
+    $("div.edit").remove();
+    $("div.delete").remove();
     initShow();
   }
 }
