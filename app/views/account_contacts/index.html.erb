@@ -1,0 +1,34 @@
+<%= render partial: "section" %>
+
+<script id="account-contacts-index-template" type="text/x-handlebars-template">
+  <table>
+    <tr class="table-header">
+      <th>Contact Name</th>
+      <th>Job Title</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    {{#each accountContacts}}
+      <tr class="table-content">
+        <td class="td-center">{{first_name}} {{last_name}}</td>
+        <td class="td-center">{{job_title}}</td>
+        <td class="td-center">{{email}}</td>
+        <td class="td-center">{{phone}}</td>
+        <td class="td-center">
+        {{#if status}}
+          <input type="checkbox" checked disabled>
+        {{else}}
+          <input type="checkbox" disabled>
+        {{/if}}
+        </td>
+        <td class="td-center"><a href="/account_addresses/{{id}}">View</a></td>
+        <td class="td-center"><a href="/account_addresses/{{id}}/edit">Edit</a></td>
+        <td class="td-center"><a href="/account_addresses/{{id}}">Delete</a></td>
+      </tr>
+    {{/each}}
+  </table>
+</script>
