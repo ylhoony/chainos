@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :warehouses
   resources :account_contacts
   resources :account_addresses
   resources :unit_of_measures
