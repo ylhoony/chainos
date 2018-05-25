@@ -1,5 +1,6 @@
 class CurrenciesController < ApplicationController
-
+  before_action :set_currency, only: [:show, :edit, :update, :destroy]
+  
   def index
     @currencies = Currency.all
     respond_to do |format|
@@ -29,7 +30,6 @@ class CurrenciesController < ApplicationController
   end
 
   def update
-    @currency = Currency.find(params[:id])
     if @currency.update(currency_params)
       respond_to do |format|
         format.html { render :index }
@@ -41,7 +41,6 @@ class CurrenciesController < ApplicationController
   end
 
   def destroy
-    @currency = Currency.find(params[:id])
     if @currency.delete
       respond_to do |format|
         format.html { render :index }
@@ -60,6 +59,10 @@ class CurrenciesController < ApplicationController
   end
 
   private
+
+  def set_currency
+    @currency = Currency.find(params[:id])
+  end
 
   def currency_params
     params.require(:currency).permit(:name, :alpha_3_code, :numeric_code, :status)
