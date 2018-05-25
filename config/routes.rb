@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :suppliers
   resources :customers
-  # resources :companies
+  
+  get "/warehouses/active", to: "warehouses#active"
   resources :warehouses
+
   resources :account_contacts
   resources :account_addresses
   resources :unit_of_measures
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
 
   get "/payment_terms/active", to: "payment_terms#active"
   resources :payment_terms
-  
+
   resources :payment_options
   resources :employees
   resources :accounts
