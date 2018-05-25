@@ -1,5 +1,5 @@
 class WarehousesController < ApplicationController
-
+  before_action :set_warehouse
   def index
     @warehouses = current_account.warehouses.all
     respond_to do |format|
@@ -24,7 +24,11 @@ class WarehousesController < ApplicationController
   end
 
   def show
-    
+    respond_to do |format|
+      format.html { render :show }
+      format.js
+      format.json { render json: @warehouse, status: 201 }
+    end
   end
 
   def edit
@@ -42,7 +46,7 @@ class WarehousesController < ApplicationController
   private
 
   def set_warehouse
-    
+    @warehouse = current_account.warehouses.find(params[:id])
   end
 
   def warehouse_params
@@ -61,5 +65,4 @@ class WarehousesController < ApplicationController
       :status
     )
   end
-
 end
