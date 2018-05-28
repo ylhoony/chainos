@@ -1,0 +1,55 @@
+<%= render partial: "section" %>
+
+<script id="supplier-form-template" type="text/x-handlebars-template">
+
+  <form class="new_supplier" id="new_supplier" action="/suppliers" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <div class="field">
+      <label for="supplier_name">Supplier Name: </label>
+      <input type="text" name="supplier[name]" id="supplier_name">
+    </div>
+
+    <div class="field">
+      <label for="supplier_payment_term_id">Payment Term: </label>
+      <select name="supplier[payment_term_id]" id="supplier_payment_term_id">
+        <option value="">Please select</option>
+        {{#each paymentTerms}}
+        {{displayOption this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="supplier_currency_id">Transaction Currency: </label>
+      <select name="supplier[currency_id]" id="supplier_currency_id">
+        <option value="">Please select</option>
+        {{#each currencies}}
+        {{displayOption this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="supplier_warehouse_id">Default Warehouse: </label>
+      <select name="supplier[warehouse_id]" id="supplier_warehouse_id">
+        <option value="">Please select</option>
+        {{#each warehouses}}
+        {{displayOption this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="supplier_comment">Comment: </label>
+      <textarea name="supplier[comment]" id="supplier_comment"></textarea>
+    </div>
+
+    <input value="true" type="hidden" name="supplier[status]" id="supplier_status"><br>
+
+    <div class="actions">
+      <input type="submit" name="commit" value="Create Supplier" data-disable-with="Create Supplier">
+    </div>
+  </form>
+</script>
