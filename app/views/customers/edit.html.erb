@@ -1,0 +1,65 @@
+<%= render partial: "section" %>
+
+<script id="customer-form-template" type="text/x-handlebars-template">
+
+  <form class="customer" id="customer" action="/customers/{{customer.id}}" accept-charset="UTF-8" method="put">
+    <input name="utf8" type="hidden" value="✓">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <div class="field">
+      <label for="customer_name">Customer Name: </label>
+      <input type="text" name="customer[name]" id="customer_name" value="{{customer.name}}">
+    </div>
+
+    <div class="field">
+      <label for="customer_payment_term_id">Payment Term: </label>
+      <select name="customer[payment_term_id]" id="customer_payment_term_id">
+        <option value="">Please select</option>
+        {{#each paymentTerms}}
+        {{displayOption this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="customer_currency_id">Transaction Currency: </label>
+      <select name="customer[currency_id]" id="customer_currency_id">
+        <option value="">Please select</option>
+        {{#each currencies}}
+        {{displayOption this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="customer_warehouse_id">Default Warehouse: </label>
+      <select name="customer[warehouse_id]" id="customer_warehouse_id">
+        <option value="">Please select</option>
+        {{#each warehouses}}
+        {{displayOption this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="customer_comment">Comment: </label>
+      <textarea name="customer[comment]" id="customer_comment">{{customer.comment}}</textarea>
+    </div>
+
+    <div class="field">
+      <label for="customer_status">Status</label>
+      {{#if customer.status}}
+        <input value="false" type="hidden" name="customer[status]" id="customer_status">
+        <input value="true" type="checkbox" name="customer[status]" id="customer_status" checked>      
+      {{else}}
+        <input value="false" type="checkbox" name="customer[status]" id="customer_status">
+        <input value="true" type="hidden" name="customer[status]" id="customer_status">
+      {{/if}}
+      <br>
+    </div>
+
+    <div class="actions">
+      <input type="submit" name="commit" value="Edit Customer" data-disable-with="Edit Customer">
+    </div>
+  </form>
+</script>

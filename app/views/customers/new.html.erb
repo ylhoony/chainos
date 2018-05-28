@@ -1,0 +1,55 @@
+<%= render partial: "section" %>
+
+<script id="customer-form-template" type="text/x-handlebars-template">
+
+  <form class="new_customer" id="new_customer" action="/customers" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <div class="field">
+      <label for="customer_name">Customer Name: </label>
+      <input type="text" name="customer[name]" id="customer_name">
+    </div>
+
+    <div class="field">
+      <label for="customer_payment_term_id">Payment Term: </label>
+      <select name="customer[payment_term_id]" id="customer_payment_term_id">
+        <option value="">Please select</option>
+        {{#each paymentTerms}}
+        {{displayOption this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="customer_currency_id">Transaction Currency: </label>
+      <select name="customer[currency_id]" id="customer_currency_id">
+        <option value="">Please select</option>
+        {{#each currencies}}
+        {{displayOption this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="customer_warehouse_id">Default Warehouse: </label>
+      <select name="customer[warehouse_id]" id="customer_warehouse_id">
+        <option value="">Please select</option>
+        {{#each warehouses}}
+        {{displayOption this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="customer_comment">Comment: </label>
+      <textarea name="customer[comment]" id="customer_comment"></textarea>
+    </div>
+
+    <input value="true" type="hidden" name="customer[status]" id="customer_status"><br>
+
+    <div class="actions">
+      <input type="submit" name="commit" value="Create Customer" data-disable-with="Create Customer">
+    </div>
+  </form>
+</script>

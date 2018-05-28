@@ -1,0 +1,16 @@
+<%= render partial: "section" %>
+
+<script id="customer-show-template" type="text/x-handlebars-template">
+  <p>Name: {{name}}</p>
+  <p>Transaction Currency: {{currency.name}}</p>
+  <p>Payment Terms: {{payment_term.name}}</p>
+  <p>Warehouse: {{warehouse.name}}</p>
+  <p>Comment: {{comment}}</p>
+  <p>Status: 
+    {{#if status}}
+    <input type="checkbox" checked disabled>
+    {{else}}
+    <input type="checkbox" disabled>
+    {{/if}}
+  </p>
+</script>
