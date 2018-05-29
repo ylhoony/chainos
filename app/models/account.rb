@@ -9,6 +9,7 @@ class Account < ApplicationRecord
   has_many :users, through: :employees
   has_many :freight_terms
   has_many :payment_terms
+  has_many :products
   has_many :unit_of_measures
   has_many :warehouses
 end

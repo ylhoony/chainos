@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 20180529223014) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "company_id"
+    t.integer "account_id"
     t.string "name"
     t.string "sku"
     t.text "description"
