@@ -1,4 +1,5 @@
 class Company < ApplicationRecord
+  has_many :companies
   scope :customers, -> { where(type: "Customer") }
   scope :suppliers, -> { where(type: "Supplier") }
 
