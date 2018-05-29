@@ -16,30 +16,59 @@
 </script>
 
 <script id="supplier-addresses-index-template" type="text/x-handlebars-template">
-  <table>
-    <tr class="table-header">
-      <th>Location Name</th>
-      <th>Contact Name</th>
-      <th>Address</th>
-      <th>Status</th>
-      <th></th>
-      <th></th>
-    </tr>
-    {{#each supplierAddresses}}
-      <tr class="table-content">
-        <td class="td-center">{{name}}</td>
-        <td class="td-center">{{contact}}</td>
-        <td class="td-center">{{address1}}, {{address2}}</td>
-        <td class="td-center">
-        {{#if status}}
-          <input type="checkbox" checked disabled>
-        {{else}}
-          <input type="checkbox" disabled>
-        {{/if}}
-        </td>
-        <td class="td-center"><a href="/suppliers/{{company_id}}/company_addresses/{{id}}/edit">Edit</a></td>
-        <td class="td-center"><a href="/suppliers/{{company_id}}/company_addresses/{{id}}">Delete</a></td>
+  <header id="sub-content-header">
+    <p>Addresses</p>
+    <article>
+      <div><a href="#"></a><div>
+    </article>
+    </header>
+  <main id="sub-content-main">
+    <table>
+      <tr class="table-header">
+        <th>Location Name</th>
+        <th>Contact Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
+        <th>Postal Code</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Fax</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
       </tr>
-    {{/each}}
-  </table>
+      {{#each supplierAddresses}}
+        <tr class="table-content">
+          <td class="td-center">{{name}}</td>
+          <td class="td-center">{{contact}}</td>
+          <td class="td-center">{{address1}}, {{address2}}</td>
+          <td class="td-center">{{city}}</td>
+          <td class="td-center">{{state}}</td>
+          <td class="td-center">{{country.name}}</td>
+          <td class="td-center">{{postal_code}}</td>
+          <td class="td-center">{{email}}</td>
+          <td class="td-center">{{phone}}</td>
+          <td class="td-center">{{fax}}</td>
+          <td class="td-center">
+          {{#if status}}
+            <input type="checkbox" checked disabled>
+          {{else}}
+            <input type="checkbox" disabled>
+          {{/if}}
+          </td>
+          <td class="td-center"><a href="/suppliers/{{company_id}}/company_addresses/{{id}}/edit">Edit</a></td>
+          <td class="td-center"><a href="/suppliers/{{company_id}}/company_addresses/{{id}}">Delete</a></td>
+        </tr>
+      {{/each}}
+    </table>
+  </main>
+  <footer id="sub-content-footer">
+  </footer>
 </script>
+
+
+  
+
+  
