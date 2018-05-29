@@ -14,3 +14,32 @@
     {{/if}}
   </p>
 </script>
+
+<script id="supplier-addresses-index-template" type="text/x-handlebars-template">
+  <table>
+    <tr class="table-header">
+      <th>Location Name</th>
+      <th>Contact Name</th>
+      <th>Address</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+    </tr>
+    {{#each supplierAddresses}}
+      <tr class="table-content">
+        <td class="td-center">{{name}}</td>
+        <td class="td-center">{{contact}}</td>
+        <td class="td-center">{{address1}}, {{address2}}</td>
+        <td class="td-center">
+        {{#if status}}
+          <input type="checkbox" checked disabled>
+        {{else}}
+          <input type="checkbox" disabled>
+        {{/if}}
+        </td>
+        <td class="td-center"><a href="/suppliers/{{company_id}}/company_addresses/{{id}}/edit">Edit</a></td>
+        <td class="td-center"><a href="/suppliers/{{company_id}}/company_addresses/{{id}}">Delete</a></td>
+      </tr>
+    {{/each}}
+  </table>
+</script>
