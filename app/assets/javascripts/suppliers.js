@@ -125,17 +125,30 @@ const submitsupplierForm = (e) => {
 
 const initShow = () => {
   const pathname = window.location.pathname;
-  const source = document.getElementById("supplier-show-template").innerHTML;
-  const template = Handlebars.compile(source);
+  const supplierSource = document.getElementById("supplier-show-template").innerHTML;
+  const supplierTemplate = Handlebars.compile(supplierSource);
+
+  const supplierAddressesSource = document.getElementById("supplier-addresses-index-template").innerHTML;
+  const supplierAddressesTemplate = Handlebars.compile(supplierAddressesSource);
+
 
   ajaxData("get", pathname, {})
     .done((res) => {
-      console.log(res);
-      $("#content-main").html(template(res));
+      $("#content-main").html(supplierTemplate(res));
     })
     .fail((err) => {
       console.log(err);
     });
+
+  ajaxData("get", `${pathname}/company_addresses`, {})
+    .done((res) => {
+      let data = new Object;
+      data.supplierAddresses = res;
+      $("#sub-content-main").html(supplierAddressesTemplate(data));
+    })
+    .fail((err) => {
+      console.log(err);
+    })
 }
 
 const ajaxData = (method, dataURL, params) => {
