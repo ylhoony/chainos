@@ -1,0 +1,80 @@
+<%= render partial: "section" %>
+
+<script id="company-address-form-template" type="text/x-handlebars-template">
+
+  <form class="new_company_address" id="new_company_address" action="{{action}}" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <div class="field">
+      <label for="company_address_name">Business Name: </label>
+      <input type="text" name="company_address[name]" id="company_address_name">
+    </div>
+
+    <div class="field">
+      <label for="company_address_contact">Contact: </label>
+      <input type="text" name="company_address[contact]" id="company_address_contact">
+    </div>
+
+    <div class="field">
+      <label for="company_address_address1">Address Line 1: </label>
+      <input type="text" name="company_address[address1]" id="company_address_address1">
+    </div>
+
+    <div class="field">
+      <label for="company_address_address2">Address Line 2: </label>
+      <input type="text" name="company_address[address2]" id="company_address_address2">
+    </div>
+
+    <div class="field">
+      <label for="company_address_city">City: </label>
+      <input type="text" name="company_address[city]" id="company_address_city">
+    </div>
+
+    <div class="field">
+      <label for="company_address_state">State/Province: </label>
+      <input type="text" name="company_address[state]" id="company_address_state">
+    </div>
+
+    <div class="field">
+      <label for="company_address_country_id">Country: </label>
+      <select name="company_address[country_id]" id="company_address_country_id">
+        <option value="">Please select</option>
+        {{#each countries}}
+        {{displayOption this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="company_address_postal_code">Postal Code: </label>
+      <input type="text" name="company_address[postal_code]" id="company_address_postal_code">
+    </div>
+
+    <div class="field">
+      <label for="company_address_email">Email: </label>
+      <input type="text" name="company_address[email]" id="company_address_email">
+    </div>
+
+    <div class="field">
+      <label for="company_address_phone">Phone: </label>
+      <input type="text" name="company_address[phone]" id="company_address_phone">
+    </div>
+
+    <div class="field">
+      <label for="company_address_fax">Fax: </label>
+      <input type="text" name="company_address[fax]" id="company_address_fax">
+    </div>
+
+    <div class="field">
+      <label for="company_address_comment">Comment: </label>
+      <textarea name="company_address[comment]" id="company_address_comment"></textarea>
+    </div>
+
+    <input value="true" type="hidden" name="company_address[status]" id="company_address_status"><br>
+
+    <div class="actions">
+      <input type="submit" name="commit" value="Create Company Address" data-disable-with="Create Company Address">
+    </div>
+  </form>
+</script>
