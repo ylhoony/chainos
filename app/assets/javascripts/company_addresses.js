@@ -79,7 +79,7 @@ const submitCompanyAddressForm = (e) => {
   ajaxData(method, action, params)
     .done((res) => {
       const pathname = window.location.pathname;
-      const data = res[0];
+      const data = (res[0] || res);
       window.location.href = `${pathname.slice(0, pathname.indexOf("/",1))}/${data.company_id}`;
     })
     .fail((err) => {
