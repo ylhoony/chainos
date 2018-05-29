@@ -144,7 +144,20 @@ const initShow = () => {
     .done((res) => {
       let data = new Object;
       data.supplierAddresses = res;
-      $("#sub-content-main").html(supplierAddressesTemplate(data));
+      data.currentPath = window.location.pathname;
+      $("#sub-content").html(supplierAddressesTemplate(data));
+
+      $("a.delete").on("click", (e) => {
+        e.preventDefault();
+        const action = $(e.target).attr("href");
+        ajaxData("delete", action, {})
+          .done((res) => {
+            window.location.href = pathname;
+          })
+          .fail((err) => {
+            console.log(err);
+          });
+      })
     })
     .fail((err) => {
       console.log(err);
