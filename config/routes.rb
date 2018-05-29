@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  resources :company_addresses
-  resources :suppliers
-  resources :customers
+  # resources :company_addresses
+  resources :suppliers do 
+    resources :company_addresses
+  end
+
+  resources :customers do
+    resources :company_addresses
+  end
   
   get "/warehouses/active", to: "warehouses#active"
   resources :warehouses
