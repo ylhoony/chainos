@@ -15,9 +15,6 @@ const init = () => {
     $("div.delete").remove();
     handlebarsFormSetup();
     initForm();    
-  } else {
-    $("div.create").remove();
-    initShow();
   }
 }
 
@@ -88,33 +85,6 @@ const submitCompanyAddressForm = (e) => {
     .fail((err) => {
       console.log(err);
     });
-}
-
-const initShow = () => {
-  const pathname = window.location.pathname;
-  const supplierSource = document.getElementById("supplier-show-template").innerHTML;
-  const supplierTemplate = Handlebars.compile(supplierSource);
-
-  const supplierAddressesSource = document.getElementById("supplier-addresses-index-template").innerHTML;
-  const supplierAddressesTemplate = Handlebars.compile(supplierAddressesSource);
-
-  ajaxData("get", pathname, {})
-    .done((res) => {
-      $("#content-main").html(supplierTemplate(res));
-    })
-    .fail((err) => {
-      console.log(err);
-    });
-
-  ajaxData("get", `${pathname}/company_addresses`, {})
-    .done((res) => {
-      let data = new Object;
-      data.supplierAddresses = res;
-      $("#sub-content").html(supplierAddressesTemplate(data));
-    })
-    .fail((err) => {
-      console.log(err);
-    })
 }
 
 const ajaxData = (method, dataURL, params) => {
