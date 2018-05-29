@@ -1,0 +1,24 @@
+<%= render partial: "section" %>
+
+<script id="products-index-template" type="text/x-handlebars-template">
+  <table>
+    <tr class="table-header">
+      <th>SKU</th>
+      <th>Product Name</th>
+      <th>UOM</th>
+      <th>Price</th>
+      <th></th>
+      <th></th>
+    </tr>
+    {{#each products}}
+      <tr class="table-content">
+        <td class="td-center">{{sku}}</td>
+        <td class="td-center">{{name}}</td>
+        <td class="td-center">{{unit_of_measure.name}}</td> 
+        <td class="td-center">{{price}}</td>
+        <td class="td-center"><a href="/products/{{id}}">View</a></td>
+        <td class="td-center"><a href="/products/{{id}}/edit">Edit</a></td>
+      </tr>
+    {{/each}}
+  </table>
+</script>
