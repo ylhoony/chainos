@@ -124,18 +124,43 @@ const submitCustomerForm = (e) => {
 }
 
 const initShow = () => {
-  const pathname = window.location.pathname;
-  const source = document.getElementById("customer-show-template").innerHTML;
-  const template = Handlebars.compile(source);
-
-  ajaxData("get", pathname, {})
-    .done((res) => {
-      console.log(res);
-      $("#content-main").html(template(res));
-    })
-    .fail((err) => {
-      console.log(err);
-    });
+    const pathname = window.location.pathname;
+    const customerSource = document.getElementById("customer-show-template").innerHTML;
+    const customerTemplate = Handlebars.compile(customerSource);
+  
+    const customerAddressesSource = document.getElementById("customer-addresses-index-template").innerHTML;
+    const customerAddressesTemplate = Handlebars.compile(customerAddressesSource);
+  
+    ajaxData("get", pathname, {})
+      .done((res) => {
+        $("#content-main").html(customerTemplate(res));
+      })
+      .fail((err) => {
+        console.log(err);
+      });
+  
+    ajaxData("get", `${pathname}/company_addresses`, {})
+      .done((res) => {
+        let data = new Object;
+        data.customerAddresses = res;
+        data.currentPath = window.location.pathname;
+        $("#sub-content").html(customerAddressesTemplate(data));
+  
+        $("a.delete").on("click", (e) => {
+          e.preventDefault();
+          const action = $(e.target).attr("href");
+          ajaxData("delete", action, {})
+            .done((res) => {
+              window.location.href = pathname;
+            })
+            .fail((err) => {
+              console.log(err);
+            });
+        })
+      })
+      .fail((err) => {
+        console.log(err);
+      })
 }
 
 const ajaxData = (method, dataURL, params) => {
