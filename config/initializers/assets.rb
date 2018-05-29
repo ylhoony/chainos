@@ -46,4 +46,6 @@ Rails.application.config.assets.precompile += %w(
   customers.css
   suppliers.js
   suppliers.css
+  company_addresses.js
+  company_addresses.css
 )
