@@ -1,0 +1,39 @@
+<%= render partial: "section" %>
+
+<script id="product-form-template" type="text/x-handlebars-template">
+  <form class="new_product" id="new_product" action="/products" accept-charset="UTF-8" method="post">
+  
+    <input name="utf8" type="hidden" value="✓">
+    
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <div class="field">
+      <label for="product_sku">SKU: </label>
+      <input type="text" name="product[sku]" id="product_sku" value="{{product.sku}}"><br>
+    </div>
+
+    <div class="field">
+      <label for="product_name">Product Name: </label>
+      <input type="text" name="product[name]" id="product_name" value="{{product.name}}">
+    </div>
+
+    <div class="field">
+      <label for="product_unit_of_measure_id">Unit of Measure: </label>
+      <select name="product[unit_of_measure_id]" id="product_unit_of_measure_id">
+        <option value="">Please select</option>
+        {{#each unitOfMeasures}}
+        {{displayOption this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="product_price">Price: </label>
+      <input type="number" step="0.01" name="product[price]" id="product_price" value="{{product.price}}"><br>
+    </div>
+
+    <div class="actions">
+      <input type="submit" name="commit" value="Edit Product" data-disable-with="Edit Product">
+    </div>
+  </form>
+</script>
