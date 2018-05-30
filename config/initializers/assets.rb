@@ -50,4 +50,8 @@ Rails.application.config.assets.precompile += %w(
   company_addresses.css
   products.js
   products.css
+  purchase_orders.js
+  purchase_orders.css
+  sales_orders.js
+  sales_orders.css
 )

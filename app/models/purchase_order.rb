@@ -1,2 +1,2 @@
-class PurchaseOrder < ApplicationRecord
+class PurchaseOrder < CompanyOrder
 end
