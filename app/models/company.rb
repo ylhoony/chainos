@@ -8,6 +8,7 @@ class Company < ApplicationRecord
   belongs_to :warehouse
 
   has_many :company_addresses
+  has_many :company_orders
 
   validates :name, presence: true
 end
