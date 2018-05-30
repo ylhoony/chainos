@@ -88,11 +88,12 @@ ActiveRecord::Schema.define(version: 20180529235352) do
   end
 
   create_table "company_orders", force: :cascade do |t|
-    t.integer "company_id"
-    t.string "order_reference"
     t.string "type"
-    t.integer "warehouse_id"
+    t.integer "account_id"
+    t.string "order_reference"
+    t.integer "company_id"
     t.integer "company_address_id"
+    t.integer "warehouse_id"
     t.integer "currency_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
