@@ -1,10 +1,35 @@
 "use strict";
 
+class Warehouse {
+  constructor(attributes) {
+    this.id = attributes.id;
+    this.name = attributes.name;
+    this.contact = attributes.contact;
+    this.address1 = attributes.address1;
+    this.address2 = attributes.address2;
+    this.city = attributes.city;
+    this.state = attributes.state;
+    this.countryId = attributes.country.id;
+    this.postalCode = attributes.postal_code;
+    this.countryName = attributes.country.name;
+    this.email = attributes.email;
+    this.phone = attributes.phone;
+    this.fax = attributes.fax;
+    this.status = attributes.status;
+  }
+
+  renderWarehouse() {
+    return Warehouse.template(this);
+  }
+}
+
 $(document).on('turbolinks:load', () => {
   const pathname = window.location.pathname;
   if (pathname.includes("warehouses")) {
     init();
   }
+  Warehouse.templateSource = document.getElementById("warehouse-show-template").innerHTML;
+  Warehouse.template = Handlebars.compile(Warehouse.templateSource);
 });
 
 const init = () => {
@@ -104,12 +129,11 @@ const submitWarehouseForm = (e) => {
 }
 
 const initShow = () => {
-  const source = document.getElementById("warehouse-show-template").innerHTML;
-  const template = Handlebars.compile(source);
-  
   ajaxData("get", window.location.pathname, {})
     .done((res) => {
-      $("#content-main").html(template(res));
+      const warehouse = new Warehouse(res);
+      const warehouseShow = warehouse.renderWarehouse();
+      $("#content-main").html(warehouseShow);
     })
     .fail((err) => {
       console.log(err);
