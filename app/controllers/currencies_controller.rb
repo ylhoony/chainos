@@ -10,7 +10,7 @@ class CurrenciesController < ApplicationController
   end
 
   def new
-    @currency = Currency.new
+    
   end
 
   def create
