@@ -81,7 +81,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 $(function() {
-  $(".create button").click(function() {
+  $(".create-currency button").click(function() {
+
     $(".modal").css("display", "unset");
     const template = Handlebars.compile(document.getElementById("currency-form-template").innerHTML);
     document.getElementById("modal-content-currency").innerHTML = template();
