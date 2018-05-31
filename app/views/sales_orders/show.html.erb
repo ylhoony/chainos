@@ -1,0 +1,28 @@
+<%= render partial: "section" %>
+
+<script id="sales-orders-index-template" type="text/x-handlebars-template">
+  <table>
+    <tr class="table-header">
+      <th>ID</th>
+      <th>Order Reference</th>
+      <th>Customer Account</th>
+      <th>Shipping Address</th>
+      <th>Warehouse</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+    </tr>
+    {{#each salesOrders}}
+      <tr class="table-content">
+        <td>{{id}}</td>
+        <td>{{order_reference}}</td>
+        <td class="td-center">{{company.name}}</td>
+        <td class="td-center">{{company_address.name}}</td>
+        <td class="td-center">{{warehouse.name}}</td>
+        <td class="td-center">tbd...</td>
+        <td><a href="/sales_orders/{{id}}">View</a></td>
+        <td><a href="/sales_orders/{{id}}/edit">Edit</a></td>
+      </tr>
+    {{/each}}
+  </table>
+</script>

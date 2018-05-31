@@ -3,31 +3,25 @@
 <script id="sales-orders-index-template" type="text/x-handlebars-template">
   <table>
     <tr class="table-header">
-      <th>Name</th>
-      <th>Payment Option</th>
-      <th>Days</th>
-      <th>Trade Credit Rate</th>
-      <th>Trade Credit Days</th>
+      <th>ID</th>
+      <th>Order Reference</th>
+      <th>Customer Account</th>
+      <th>Shipping Address</th>
+      <th>Warehouse</th>
       <th>Status</th>
       <th></th>
       <th></th>
     </tr>
-    {{#each paymentTerms}}
+    {{#each salesOrders}}
       <tr class="table-content">
-        <td>{{name}}</td>
-        <td>{{payment_option.name}}</td>
-        <td class="td-center">{{days}}</td>
-        <td class="td-center">{{trade_credit_rate}}</td>
-        <td class="td-center">{{trade_credit_days}}</td>
-        <td class="td-center">
-        {{#if status}}
-          <input type="checkbox" checked disabled>
-        {{else}}
-          <input type="checkbox" disabled>
-        {{/if}}
-        </td>
-        <td><a href="/payment_terms/{{id}}">View</a></td>
-        <td><a href="/payment_terms/{{id}}/edit">Edit</a></td>
+        <td>{{id}}</td>
+        <td>{{order_reference}}</td>
+        <td class="td-center">{{company.name}}</td>
+        <td class="td-center">{{company_address.name}}</td>
+        <td class="td-center">{{warehouse.name}}</td>
+        <td class="td-center">tbd...</td>
+        <td><a href="/sales_orders/{{id}}">View</a></td>
+        <td><a href="/sales_orders/{{id}}/edit">Edit</a></td>
       </tr>
     {{/each}}
   </table>
