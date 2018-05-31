@@ -10,6 +10,8 @@ class Account < ApplicationRecord
   has_many :freight_terms
   has_many :payment_terms
   has_many :products
+  has_many :sales_orders, class_name: "SalesOrder"
+  has_many :purchase_orders, class_name: "PurchaseOrder"
   has_many :unit_of_measures
   has_many :warehouses
 end
